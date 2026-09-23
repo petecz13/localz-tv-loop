@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { background: #0b0b0b; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  a { color: #f4c64a; }
+  a:hover { color: #ffd77a; }
+</style>
+</helmet>
+<div id="lz-stage" style="position: relative; flex-shrink: 0; width: 1920px; height: 1080px; overflow: hidden; background: radial-gradient(120% 120% at 50% 20%, #13284a 0%, #081327 70%); font-family: 'Barlow Condensed', sans-serif; padding: 28px 40px 22px; display: flex; flex-direction: column; gap: 14px; transform-origin: center center;">
+
+  <div style="display: flex; align-items: center; gap: 28px; height: 120px;">
+    <img src="uploads/St.peteLogo.webp" alt="Localz Sports Bar &amp; Grill" style="height: 120px; width: auto; object-fit: contain; filter: drop-shadow(0 6px 16px rgba(0,0,0,0.6));">
+    <div style="display: flex; align-items: baseline; gap: 22px;">
+      <span style="font-family: 'Anton', sans-serif; font-size: 120px; line-height: 0.9; letter-spacing: 3px; color: #ffffff; text-shadow: 0 6px 0 rgba(0,0,0,0.3);">OCTOBER</span>
+      <span style="font-family: 'Anton', sans-serif; font-size: 72px; line-height: 1; color: #e8b93a;">2026</span>
+    </div>
+    <div style="margin-left: auto; display: flex; flex-direction: column; align-items: flex-end; gap: 12px;">
+      <span style="font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 40px; letter-spacing: 5px; text-transform: uppercase; color: #aed6ee;">Game &amp; Event Calendar</span>
+      <div style="display: flex; gap: 26px;">
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="width: 28px; height: 28px; border-radius: 6px; background: linear-gradient(160deg, #d4141d, #8e0c12); border: 2px solid #e8b93a;"></span>
+          <span style="font-weight: 800; font-size: 28px; letter-spacing: 2px; text-transform: uppercase; color: #ffffff;">Watch Party</span>
+        </div>
+        <div style="display: flex; align-items: center; gap: 10px;">
+          <span style="width: 28px; height: 28px; border-radius: 6px; background: rgba(232,185,58,0.22); border: 2px solid #e8b93a;"></span>
+          <span style="font-weight: 800; font-size: 28px; letter-spacing: 2px; text-transform: uppercase; color: #ffffff;">College Night</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 8px;">
+    <sc-for list="{{ dows }}" as="d" hint-placeholder-count="7">
+      <div style="background: #e8b93a; border-radius: 6px; text-align: center; font-family: 'Anton', sans-serif; font-size: 30px; line-height: 44px; letter-spacing: 3px; color: #0d1d34;">{{ d }}</div>
+    </sc-for>
+  </div>
+
+  <div style="flex: 1; min-height: 0; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); grid-template-rows: repeat(5, minmax(0, 1fr)); gap: 8px;">
+    <sc-for list="{{ cells }}" as="c" hint-placeholder-count="35">
+      <div style="position: relative; overflow: hidden; border-radius: 8px; padding: 8px 12px; display: flex; flex-direction: column; gap: 4px; background: {{ c.bg }}; border: 2px solid {{ c.bd }};">
+        <span style="font-family: 'Anton', sans-serif; font-size: 32px; line-height: 1; color: {{ c.numColor }};">{{ c.day }}</span>
+        <sc-for list="{{ c.events }}" as="e" hint-placeholder-count="1">
+          <div style="display: flex; flex-direction: column;">
+            <span style="font-weight: 800; font-size: 22px; line-height: 1.05; letter-spacing: 1.5px; text-transform: uppercase; color: {{ e.kc }};">{{ e.k }}</span>
+            <span style="font-weight: 700; font-size: 27px; line-height: 1.02; text-transform: uppercase; color: #ffffff; text-wrap: balance;">{{ e.t }}</span>
+          </div>
+        </sc-for>
+      </div>
+    </sc-for>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; align-items: center;">
+    <span style="font-weight: 600; font-size: 24px; letter-spacing: 2px; text-transform: uppercase; color: #aecbe8;">*MLB postseason games subject to change</span>
+    <span style="font-weight: 700; font-size: 32px; letter-spacing: 5px; text-transform: uppercase; color: #f4e6bf;">WWW.LOCALZSPORTSBAR.COM</span>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1920,&quot;height&quot;:1080}}">
+class Component extends DCLogic {
+  componentDidMount() {
+    const fit = () => {
+      const el = document.getElementById('lz-stage');
+      if (!el) return;
+      el.style.transform = 'scale(' + Math.min(window.innerWidth / 1920, window.innerHeight / 1080) + ')';
+    };
+    fit();
+    window.addEventListener('resize', fit);
+  }
+  renderVals() {
+    const G = '#e8b93a', B = '#8fc3ec', N = '#ff6b6b', T = '#aed6ee', S = '#7fd6a0';
+    const nfl = (t, time) => ({ k: 'NFL Sunday' + (time ? ' · ' + time : ''), t, kc: G });
+    const mnf = (t) => ({ k: 'MNF · 8:15 PM', t, kc: T });
+    const tnf = (t) => ({ k: 'TNF · 8:15 PM', t, kc: T });
+    const trivia = { k: 'Trivia · 7:30 PM', t: 'Win Cash Prizes', kc: G };
+    const rays = (g) => ({ k: 'Rays Postseason ' + g + '*', t: '', kc: B });
+    const gameday = { k: 'College Gameday', t: '', kc: G };
+    const rowdies = { k: 'Rowdies Home · 7:30', t: '', kc: S };
+    const ev = {
+      1: [{ k: 'NHL Opener · 7:00 PM', t: 'Lightning vs. Rangers', kc: N }],
+      3: [rays('G1')],
+      4: [nfl('Bucs vs. Packers', '1 PM')],
+      5: [{ k: 'MNF', t: 'Saints vs. Falcons', kc: T }, rays('G2')],
+      7: [trivia, rays('G3')],
+      8: [{ k: 'TNF · 8:15 PM', t: 'Bucs vs. Cowboys', kc: G }, rays('G4')],
+      10: [gameday],
+      11: [nfl('All Day Sunday')],
+      12: [mnf('Bills vs. Rams')],
+      14: [trivia],
+      15: [tnf('Seahawks vs. Broncos')],
+      17: [gameday, rowdies],
+      18: [nfl('Bucs vs. Steelers', '1 PM')],
+      19: [mnf('Commanders vs. 49ers')],
+      21: [trivia],
+      22: [tnf('Patriots vs. Bears')],
+      24: [gameday, rowdies],
+      25: [nfl('Bucs vs. Panthers', '1 PM')],
+      26: [mnf('Eagles vs. Cowboys')],
+      28: [trivia],
+      29: [tnf('Panthers vs. Packers')],
+      30: [{ k: 'UCF Space Game · 7:30', t: 'UCF vs. Baylor', kc: G }],
+      31: [{ k: 'Halloween · 3:30 PM', t: 'Gators, Noles & Bulls', kc: G }]
+    };
+    const watch = [4, 8, 18, 25], college = [10, 17, 24, 30, 31];
+    const cells = [];
+    for (let i = 0; i < 4; i++) cells.push({ day: '', events: [], bg: 'transparent', bd: 'transparent', numColor: '#ffffff' });
+    for (let d = 1; d <= 31; d++) {
+      const w = watch.includes(d), c = college.includes(d);
+      cells.push({
+        day: String(d),
+        events: ev[d] || [],
+        bg: w ? 'linear-gradient(160deg, #c8141c 0%, #7a0c12 100%)' : c ? 'rgba(232,185,58,0.16)' : 'rgba(255,255,255,0.05)',
+        bd: w || c ? '#e8b93a' : 'rgba(174,214,238,0.18)',
+        numColor: w ? '#ffd257' : c ? '#e8b93a' : '#ffffff'
+      });
+    }
+    return { dows: ['SUN', 'MON', 'TUE', 'WED', 'THU', 'FRI', 'SAT'], cells };
+  }
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<template id="__bundler_thumbnail" data-bg-color="#0b1a33">
+  <svg viewBox="0 0 200 120" xmlns="http://www.w3.org/2000/svg">
+    <rect width="200" height="120" fill="#0b1a33"/>
+    <circle cx="100" cy="80" r="34" fill="#ffdc93"/>
+    <rect y="96" width="200" height="24" fill="#d6b98b"/>
+    <text x="100" y="30" font-family="sans-serif" font-size="14" fill="#ffe6b0" text-anchor="middle" letter-spacing="2">COMING SOON</text>
+  </svg>
+</template>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@500;600;700&family=Barlow+Semi+Condensed:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { background: #04060e; }
+  a { color: #ffd45c; text-decoration: none; }
+  a:hover { color: #fff1c9; }
+  @keyframes cbb-shimmer { 0% { transform: translateX(-3%); } 50% { transform: translateX(3%); } 100% { transform: translateX(-3%); } }
+  @keyframes cbb-sunpulse { 0%,100% { opacity: 0.55; transform: scale(1); } 50% { opacity: 0.85; transform: scale(1.06); } }
+  @keyframes cbb-soon { 0%,100% { box-shadow: 0 0 26px rgba(255,196,92,0.45), inset 0 0 16px rgba(255,196,92,0.16); } 50% { box-shadow: 0 0 60px rgba(255,196,92,0.85), inset 0 0 22px rgba(255,196,92,0.3); } }
+</style>
+</helmet>
+<div style="position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #0b1a33; border: 30px solid #1c3557; box-shadow: inset 0 0 0 3px rgba(0,0,0,0.35); font-family: 'Barlow Semi Condensed', sans-serif;">
+
+  <!-- sky -->
+  <div style="position: absolute; inset: 0; background: linear-gradient(180deg, #17264a 0%, #2b3563 18%, #5c3a6b 34%, #a45163 48%, #d97a55 58%, #f0a558 64%, #f8c877 68.5%, #fbe0a4 70.5%);"></div>
+
+  <!-- sunset clouds -->
+  <div style="position: absolute; left: -120px; top: 118px; width: 900px; height: 78px; border-radius: 50%; filter: blur(26px); background: linear-gradient(180deg, rgba(255,196,150,0.30), rgba(120,70,110,0.55));"></div>
+  <div style="position: absolute; right: -80px; top: 210px; width: 780px; height: 64px; border-radius: 50%; filter: blur(24px); background: linear-gradient(180deg, rgba(255,180,130,0.34), rgba(110,64,104,0.5));"></div>
+  <div style="position: absolute; left: 240px; top: 392px; width: 1180px; height: 52px; border-radius: 50%; filter: blur(22px); background: linear-gradient(180deg, rgba(255,214,164,0.40), rgba(176,92,96,0.42));"></div>
+  <div style="position: absolute; right: 120px; top: 512px; width: 900px; height: 40px; border-radius: 50%; filter: blur(18px); background: linear-gradient(180deg, rgba(255,226,178,0.5), rgba(214,124,92,0.35));"></div>
+  <div style="position: absolute; left: 60px; top: 604px; width: 620px; height: 30px; border-radius: 50%; filter: blur(14px); background: linear-gradient(180deg, rgba(255,236,196,0.55), rgba(226,146,98,0.3));"></div>
+
+  <!-- sun glow + disc half-set on the horizon -->
+  <div style="position: absolute; left: 50%; top: 70.5%; transform: translate(-50%, -50%); width: 1240px; height: 1240px; border-radius: 50%; background: radial-gradient(circle, rgba(255,214,140,0.50) 0%, rgba(255,166,96,0.20) 36%, rgba(255,140,80,0) 64%); animation: cbb-sunpulse 7s ease-in-out infinite;"></div>
+  <div style="position: absolute; left: 50%; top: 70.5%; transform: translate(-50%, -50%); width: 300px; height: 300px; border-radius: 50%; background: radial-gradient(circle, #fff8e2 0%, #ffdc93 48%, #ffb457 100%); box-shadow: 0 0 140px rgba(255,196,116,0.8);"></div>
+
+  <!-- horizon haze -->
+  <div style="position: absolute; left: 0; right: 0; top: 68%; height: 60px; background: linear-gradient(180deg, rgba(255,224,170,0) 0%, rgba(255,224,170,0.45) 60%, rgba(255,232,190,0.2) 100%); filter: blur(9px);"></div>
+
+  <!-- GULF WATER -->
+  <div style="position: absolute; left: 0; right: 0; top: 70.5%; height: 15%; overflow: hidden; background: linear-gradient(180deg, #2f7f95 0%, #2b93a8 26%, #35a8b6 55%, #4fc0c2 100%);">
+    <div style="position: absolute; left: 50%; top: 0; transform: translateX(-50%); width: 460px; height: 100%; background: linear-gradient(180deg, rgba(255,222,158,0.75), rgba(255,190,110,0.05)); filter: blur(16px); animation: cbb-shimmer 9s ease-in-out infinite;"></div>
+    <div style="position: absolute; inset: 0; background: repeating-linear-gradient(180deg, rgba(255,255,255,0.16) 0px, rgba(255,255,255,0.16) 2px, rgba(255,255,255,0) 2px, rgba(255,255,255,0) 14px);"></div>
+    <div style="position: absolute; left: 0; right: 0; top: 0; height: 10px; background: rgba(20,60,80,0.35); filter: blur(3px);"></div>
+    <div style="position: absolute; left: -6%; right: -6%; bottom: 34px; height: 12px; border-radius: 50%; background: rgba(255,255,255,0.55); filter: blur(5px);"></div>
+    <div style="position: absolute; left: -6%; right: -6%; bottom: 8px; height: 22px; border-radius: 50%; background: rgba(255,255,255,0.8); filter: blur(7px);"></div>
+  </div>
+
+  <!-- WET SAND / SHOREBREAK -->
+  <div style="position: absolute; left: 0; right: 0; top: 85.5%; height: 5.5%; overflow: hidden; background: linear-gradient(180deg, #c9b189 0%, #d9c49c 100%);">
+    <div style="position: absolute; left: -8%; right: -8%; top: -26px; height: 54px; border-radius: 50%; background: rgba(255,255,255,0.92); filter: blur(9px);"></div>
+    <div style="position: absolute; left: -8%; right: -8%; top: 6px; height: 30px; border-radius: 50%; background: rgba(255,255,255,0.35); filter: blur(11px);"></div>
+    <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(120,150,150,0.35), rgba(120,150,150,0));"></div>
+  </div>
+
+  <!-- DRY SAND -->
+  <div style="position: absolute; left: 0; right: 0; top: 91%; bottom: 0; background:
+      radial-gradient(120% 180% at 50% -40%, rgba(255,224,168,0.55), rgba(255,224,168,0) 70%),
+      linear-gradient(180deg, #e0c79c 0%, #d6b98b 45%, #c7a87c 100%);">
+    <div style="position: absolute; inset: 0; opacity: 0.35; background: repeating-linear-gradient(97deg, rgba(255,255,255,0.14) 0px, rgba(255,255,255,0.14) 1px, rgba(0,0,0,0) 1px, rgba(0,0,0,0) 5px), repeating-linear-gradient(4deg, rgba(120,86,50,0.12) 0px, rgba(120,86,50,0.12) 1px, rgba(0,0,0,0) 1px, rgba(0,0,0,0) 7px);"></div>
+  </div>
+
+  <!-- soft top scrim -->
+  <div style="position: absolute; top: 0; left: 0; right: 0; height: 240px; background: linear-gradient(180deg, rgba(6,12,22,0.7), transparent);"></div>
+
+  <!-- COMING SOON eyebrow -->
+  <div style="position: absolute; top: 56px; left: 0; right: 0; display: flex; justify-content: center;">
+    <span style="display: flex; align-items: center; gap: 26px; padding: 18px 60px; border-radius: 999px; border: 4px solid rgba(255,206,120,0.85); background: rgba(10,22,40,0.55); animation: cbb-soon 4s ease-in-out infinite;">
+      <span style="font-family: 'Anton', sans-serif; font-size: 62px; line-height: 1; letter-spacing: 10px; text-transform: uppercase; color: #ffe6b0; text-shadow: 0 0 24px rgba(255,180,90,0.7);">Coming Soon</span>
+    </span>
+  </div>
+
+  <!-- LOGO plaque -->
+  <div style="position: absolute; top: 176px; left: 0; right: 0; display: flex; justify-content: center;">
+    <div style="padding: 0; border-radius: 34px; overflow: hidden; background: #fdfcf8; border: 8px solid #1c3557; box-shadow: 0 0 0 6px rgba(200,35,46,0.85), 0 40px 90px rgba(0,0,0,0.55);">
+      <img src="uploads/CBB-logo.webp" alt="Clearwater Beach Bar" style="display: block; height: 430px; width: auto; object-fit: contain;">
+    </div>
+  </div>
+
+  <!-- headline + address -->
+  <div style="position: absolute; top: 646px; left: 0; right: 0; padding: 26px 0 22px; display: flex; flex-direction: column; align-items: center; gap: 14px; text-align: center; background: radial-gradient(58% 130% at 50% 50%, rgba(8,20,36,0.68), rgba(8,20,36,0) 74%);">
+    <h1 style="font-family: 'Anton', sans-serif; font-weight: 400; font-size: 104px; line-height: 1; letter-spacing: 2px; text-transform: uppercase; color: #fdf6e8; text-shadow: 0 6px 26px rgba(0,0,0,0.85);">Join Us On <span style="color: #ffd28a;">Clearwater Beach</span></h1>
+    <div style="display: flex; align-items: center; gap: 26px;">
+      <span style="width: 90px; height: 3px; background: rgba(255,214,140,0.6);"></span>
+      <span style="font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 54px; line-height: 1; letter-spacing: 5px; text-transform: uppercase; color: #f4e6cc; text-shadow: 0 4px 16px rgba(0,0,0,0.8);">411 Mandalay Ave &nbsp;•&nbsp; Clearwater Beach, USA</span>
+      <span style="width: 90px; height: 3px; background: rgba(255,214,140,0.6);"></span>
+    </div>
+  </div>
+
+  <!-- tagline footer -->
+  <div style="position: absolute; bottom: 44px; left: 0; right: 0; display: flex; justify-content: center;">
+    <span style="font-family: 'Anton', sans-serif; font-size: 52px; line-height: 1; letter-spacing: 8px; text-transform: uppercase; color: #1c3557; text-shadow: 0 2px 0 rgba(255,255,255,0.35);">High Tides &amp; Good Vibes</span>
+  </div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1920,&quot;height&quot;:1080}}"></script>
+</body>
+</html>

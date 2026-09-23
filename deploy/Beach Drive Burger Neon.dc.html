@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#0c1631"/><circle cx="50" cy="50" r="30" fill="#e0b23c"/></svg></template>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@500;600;700&family=Barlow+Semi+Condensed:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { background: #04060e; }
+  @keyframes lz-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-16px); } }
+  @keyframes lz-flick { 0%,16%,18%,40%,42%,100% { opacity: 1; } 17%,41%,70% { opacity: .55; } }
+  @keyframes neon-breathe { 0%,100% { opacity: .9; } 50% { opacity: 1; } }
+  @keyframes neon-flicker {
+    0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% { opacity: 1; }
+    20%, 24%, 55% { opacity: .76; }
+  }
+</style>
+</helmet>
+<div style="position: relative; width: 1920px; height: 1080px; overflow: hidden; background: radial-gradient(125% 120% at 30% 42%, #15233f 0%, #0c1631 48%, #050a18 100%); font-family: 'Barlow Semi Condensed', sans-serif;">
+
+  <!-- ambient neon room glow -->
+  <div style="position: absolute; left: 30%; top: 46%; width: 1300px; height: 1300px; transform: translate(-50%,-50%); border-radius: 50%; background: radial-gradient(closest-side, rgba(245,190,70,0.20), rgba(245,190,70,0.05) 52%, transparent 72%); pointer-events: none; animation: neon-breathe 5.5s ease-in-out infinite;"></div>
+  <div style="position: absolute; left: 74%; top: 36%; width: 1050px; height: 1050px; transform: translate(-50%,-50%); border-radius: 50%; background: radial-gradient(closest-side, rgba(56,140,255,0.16), rgba(56,140,255,0.05) 54%, transparent 72%); pointer-events: none;"></div>
+  <!-- floor reflection -->
+  <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 230px; background: linear-gradient(0deg, rgba(245,190,70,0.07), transparent); pointer-events: none;"></div>
+  <!-- fine grid texture -->
+  <div style="position: absolute; inset: 0; background-image: linear-gradient(rgba(120,140,180,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(120,140,180,0.04) 1px, transparent 1px); background-size: 64px 64px; pointer-events: none;"></div>
+  <!-- vignette -->
+  <div style="position: absolute; inset: 0; background: radial-gradient(125% 110% at 40% 46%, transparent 48%, rgba(0,0,0,0.66) 100%); pointer-events: none;"></div>
+
+  <!-- ============ NEON MEDALLION (left) ============ -->
+  <div style="position: absolute; left: 128px; top: 96px; width: 900px; height: 900px; animation: lz-float 6.5s ease-in-out infinite;">
+    <!-- outer gold neon tube -->
+    <div style="position: absolute; inset: 0; border-radius: 50%; border: 7px solid #ffdf8c; box-shadow: 0 0 16px rgba(255,200,80,0.95), 0 0 52px rgba(240,176,40,0.75), inset 0 0 30px rgba(245,185,55,0.5); animation: neon-flicker 7s linear infinite;"></div>
+    <!-- thin blue accent tube -->
+    <div style="position: absolute; inset: 21px; border-radius: 50%; border: 2px solid rgba(120,180,255,0.9); box-shadow: 0 0 12px rgba(56,140,255,0.75), inset 0 0 12px rgba(56,140,255,0.4);"></div>
+    <!-- dark interior -->
+    <div style="position: absolute; inset: 31px; border-radius: 50%; overflow: hidden; background: radial-gradient(closest-side, #122039 0%, #0a1226 62%, #060a16 100%);">
+      <div style="position: absolute; inset: 0; background: radial-gradient(48% 44% at 50% 55%, rgba(245,185,55,0.26), rgba(245,185,55,0.07) 58%, transparent 78%); pointer-events: none;"></div>
+      <img src="uploads/beach-drive-burger-cutout.webp" alt="Beach Drive Burger" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; transform: scale(1.26); object-position: 50% 49%; filter: drop-shadow(0 18px 30px rgba(0,0,0,0.6));">
+      <div style="position: absolute; inset: 0; border-radius: 50%; box-shadow: inset 0 0 110px 32px rgba(0,0,0,0.45); pointer-events: none;"></div>
+    </div>
+  </div>
+
+  <!-- ============ SIDE-NOTE NEON PILL (over medallion) ============ -->
+  <div style="position: absolute; top: 922px; transform: translateX(-50%) rotate(-5deg); z-index: 6; left: 578px;">
+    <div style="display: flex; align-items: center; justify-content: center; padding: 13px 40px; border-radius: 999px; border: 2px solid rgba(120,180,255,0.9); background: rgba(8,14,26,0.72); box-shadow: 0 0 16px rgba(56,140,255,0.65), inset 0 0 14px rgba(56,140,255,0.24);">
+      <span style="font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 40px; letter-spacing: 1px; color: #eaf2ff; white-space: nowrap; text-shadow: 0 0 8px rgba(150,195,255,0.95), 0 0 20px rgba(56,140,255,0.7);">{{ price }}</span>
+    </div>
+  </div>
+
+  <!-- ============ RIGHT CONTENT ============ -->
+  <div style="position: absolute; left: 1052px; top: 104px; width: 800px; display: flex; flex-direction: column;">
+
+    <img src="uploads/St.peteLogo.webp" alt="Localz Sports Bar & Grill" style="height: 200px; width: auto; object-fit: contain; object-position: left center; filter: drop-shadow(0 0 22px rgba(255,170,55,0.35));">
+
+    <div style="display: flex; align-items: center; gap: 18px; margin-top: 34px;">
+      <span style="display: inline-flex; align-items: center; border: 2px solid rgba(255,205,90,0.9); background: rgba(245,185,55,0.07); color: #ffe9b8; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 26px; letter-spacing: 6px; padding: 8px 26px; white-space: nowrap; flex: 0 0 auto; border-radius: 999px; text-shadow: 0 0 8px rgba(255,200,80,0.9); box-shadow: 0 0 14px rgba(240,176,40,0.5), inset 0 0 12px rgba(240,176,40,0.18); animation: lz-flick 6s linear infinite;">{{ eyebrow }}</span>
+      <span style="height: 2px; flex: 1; max-width: 220px; background: linear-gradient(90deg, rgba(255,205,90,0.9), transparent); box-shadow: 0 0 8px rgba(240,176,40,0.6);"></span>
+    </div>
+
+    <h1 style="margin-top: 30px; font-family: 'Anton', sans-serif; font-weight: 400; line-height: 0.84; letter-spacing: 0px; text-transform: uppercase;">
+      <span style="display: block; font-size: 116px; color: #e8f1ff; text-shadow: 0 0 7px #b8d4ff, 0 0 20px #5a9bff, 0 0 46px #2f6fff, 0 0 88px #0b46d6;">{{ titleTop }}</span>
+      <span style="display: block; font-size: 170px; color: #fff4d6; text-shadow: 0 0 8px #ffe199, 0 0 22px #ffc24a, 0 0 50px #f5a623, 0 0 96px #e08600;">{{ titleBottom }}</span>
+    </h1>
+
+    <p style="margin-top: 34px; max-width: 760px; font-family: 'Barlow Semi Condensed', sans-serif; font-weight: 500; font-size: 33px; line-height: 1.34; color: #d4e2f2; text-wrap: pretty;">{{ description }}</p>
+
+    <div style="display: flex; align-items: center; gap: 14px; margin-top: 28px;">
+      <span style="width: 15px; height: 15px; transform: rotate(45deg); background: #5a9bff; box-shadow: 0 0 10px rgba(56,140,255,0.9); animation: lz-flick 2.8s ease-in-out infinite;"></span>
+      <span style="font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 30px; letter-spacing: 3px; text-transform: uppercase; color: #c2dbff; text-shadow: 0 0 9px rgba(56,140,255,0.55);">{{ tag }}</span>
+    </div>
+  </div>
+
+  <!-- ============ NEON PROMO (bottom right) ============ -->
+  <div style="position: absolute; left: 1052px; bottom: 56px; display: flex; align-items: center; gap: 18px;">
+    <span style="width: 14px; height: 14px; transform: rotate(45deg); background: #ffc24a; box-shadow: 0 0 12px rgba(240,176,40,0.95); flex: 0 0 auto;"></span>
+    <span style="font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 34px; letter-spacing: 2px; text-transform: uppercase; color: #ffe9b8; white-space: nowrap; text-shadow: 0 0 9px rgba(255,200,80,0.95), 0 0 22px rgba(240,176,40,0.6);">{{ promo }}</span>
+  </div>
+  <!-- neon underline -->
+  <div style="position: absolute; left: 1052px; right: 64px; bottom: 40px; height: 2px; background: linear-gradient(90deg, #ffc24a, rgba(240,176,40,0) 92%); box-shadow: 0 0 12px rgba(240,176,40,0.8);"></div>
+
+  <!-- top neon rule -->
+  <div style="position: absolute; top: 0; left: 0; width: 70%; height: 3px; background: linear-gradient(90deg, #5a9bff, rgba(56,140,255,0) 100%); box-shadow: 0 0 14px rgba(56,140,255,0.8);"></div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{
+  &quot;$preview&quot;: { &quot;width&quot;: 1920, &quot;height&quot;: 1080 },
+  &quot;eyebrow&quot;: { &quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;SIGNATURE BURGERZ&quot;, &quot;tsType&quot;: &quot;string&quot; },
+  &quot;titleTop&quot;: { &quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;BEACH DRIVE&quot;, &quot;tsType&quot;: &quot;string&quot; },
+  &quot;titleBottom&quot;: { &quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;BURGER&quot;, &quot;tsType&quot;: &quot;string&quot; },
+  &quot;description&quot;: { &quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;A half-pound all-beef patty smothered in melted Swiss and roasted garlic mushrooms, finished with a zesty horseradish aioli on a buttery toasted brioche bun.&quot;, &quot;tsType&quot;: &quot;string&quot; },
+  &quot;tag&quot;: { &quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;Smothered in Swiss &amp; Roasted Mushrooms&quot;, &quot;tsType&quot;: &quot;string&quot; },
+  &quot;price&quot;: { &quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;Served w/ Choice of Side&quot;, &quot;tsType&quot;: &quot;string&quot; },
+  &quot;promo&quot;: { &quot;editor&quot;: &quot;text&quot;, &quot;default&quot;: &quot;Try a side of our fried Brussels sprouts&quot;, &quot;tsType&quot;: &quot;string&quot; }
+}">
+class Component extends DCLogic {
+  renderVals() {
+    const p = this.props || {};
+    return {
+      eyebrow: p.eyebrow ?? "SIGNATURE BURGERZ",
+      titleTop: p.titleTop ?? "BEACH DRIVE",
+      titleBottom: p.titleBottom ?? "BURGER",
+      description: p.description ?? "A half-pound all-beef patty smothered in melted Swiss and roasted garlic mushrooms, finished with a zesty horseradish aioli on a buttery toasted brioche bun.",
+      tag: p.tag ?? "Smothered in Swiss & Roasted Mushrooms",
+      price: p.price ?? "Served w/ Choice of Side",
+      promo: p.promo ?? "Try a side of our fried Brussels sprouts"
+    };
+  }
+}
+</script>
+</body>
+</html>

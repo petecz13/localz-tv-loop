@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@500;600;700;800&family=Kaushan+Script&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { background: #0b0b0b; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  a { color: #f4c64a; }
+  a:hover { color: #ffd77a; }
+  @keyframes lz-qfloat { 0%,100% { transform: translateY(0) rotate(var(--r)); } 50% { transform: translateY(-14px) rotate(var(--r)); } }
+  @keyframes lz-dogfloat { 0%,100% { transform: translateY(0) rotate(-4deg); } 50% { transform: translateY(-16px) rotate(-4deg); } }
+  @keyframes lz-badgepulse { 0%,100% { transform: rotate(9deg) scale(1); } 50% { transform: rotate(9deg) scale(1.05); } }
+</style>
+</helmet>
+
+<div id="lz-stage" style="position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #0c0c0c; font-family: 'Barlow Condensed', sans-serif; transform-origin: center center;">
+
+  <!-- black backdrop with scattered question marks -->
+  <div style="position: absolute; inset: 0; background: radial-gradient(120% 120% at 50% 40%, #13284a 0%, #081327 70%);"></div>
+  <span style="--r: -14deg; position: absolute; left: 40px; top: 60px; font-family: 'Anton', sans-serif; font-size: 200px; color: transparent; -webkit-text-stroke: 3px rgba(232,185,58,0.28);">?</span>
+  <span style="--r: 12deg; position: absolute; left: 20px; top: 520px; font-family: 'Anton', sans-serif; font-size: 260px; color: transparent; -webkit-text-stroke: 3px rgba(232,185,58,0.22);">?</span>
+  <span style="--r: -8deg; position: absolute; left: 120px; bottom: 30px; font-family: 'Anton', sans-serif; font-size: 150px; color: transparent; -webkit-text-stroke: 3px rgba(232,185,58,0.2);">?</span>
+  <span style="--r: 10deg; position: absolute; right: 60px; top: 40px; font-family: 'Anton', sans-serif; font-size: 220px; color: transparent; -webkit-text-stroke: 3px rgba(232,185,58,0.26);">?</span>
+  <span style="--r: -12deg; position: absolute; right: 30px; top: 430px; font-family: 'Anton', sans-serif; font-size: 300px; color: transparent; -webkit-text-stroke: 3px rgba(232,185,58,0.2);">?</span>
+  <span style="--r: 14deg; position: absolute; right: 130px; bottom: 20px; font-family: 'Anton', sans-serif; font-size: 160px; color: transparent; -webkit-text-stroke: 3px rgba(232,185,58,0.24);">?</span>
+  <span style="--r: 8deg; position: absolute; left: 170px; top: 280px; font-family: 'Anton', sans-serif; font-size: 110px; color: transparent; -webkit-text-stroke: 2px rgba(232,185,58,0.2);">?</span>
+  <span style="--r: -18deg; position: absolute; left: 8px; top: 300px; font-family: 'Anton', sans-serif; font-size: 130px; color: transparent; -webkit-text-stroke: 2px rgba(140,180,230,0.18);">?</span>
+  <span style="--r: 20deg; position: absolute; left: 210px; bottom: 120px; font-family: 'Anton', sans-serif; font-size: 120px; color: transparent; -webkit-text-stroke: 2px rgba(232,185,58,0.16);">?</span>
+  <span style="--r: -6deg; position: absolute; left: 60px; top: 20px; font-family: 'Anton', sans-serif; font-size: 120px; color: transparent; -webkit-text-stroke: 2px rgba(140,180,230,0.16);">?</span>
+  <span style="--r: 16deg; position: absolute; left: 250px; top: 30px; font-family: 'Anton', sans-serif; font-size: 90px; color: transparent; -webkit-text-stroke: 2px rgba(232,185,58,0.18);">?</span>
+  <span style="--r: -10deg; position: absolute; right: 200px; top: 210px; font-family: 'Anton', sans-serif; font-size: 120px; color: transparent; -webkit-text-stroke: 2px rgba(232,185,58,0.2);">?</span>
+  <span style="--r: 12deg; position: absolute; right: 20px; top: 250px; font-family: 'Anton', sans-serif; font-size: 140px; color: transparent; -webkit-text-stroke: 2px rgba(140,180,230,0.18);">?</span>
+  <span style="--r: -16deg; position: absolute; right: 240px; bottom: 130px; font-family: 'Anton', sans-serif; font-size: 100px; color: transparent; -webkit-text-stroke: 2px rgba(232,185,58,0.16);">?</span>
+  <span style="--r: 6deg; position: absolute; right: 60px; bottom: 220px; font-family: 'Anton', sans-serif; font-size: 110px; color: transparent; -webkit-text-stroke: 2px rgba(140,180,230,0.16);">?</span>
+  <span style="--r: -4deg; position: absolute; right: 30px; top: 30px; font-family: 'Anton', sans-serif; font-size: 90px; color: transparent; -webkit-text-stroke: 2px rgba(232,185,58,0.18);">?</span>
+  <span style="--r: 18deg; position: absolute; left: 100px; top: 700px; font-family: 'Anton', sans-serif; font-size: 100px; color: transparent; -webkit-text-stroke: 2px rgba(232,185,58,0.16);">?</span>
+  <span style="--r: -14deg; position: absolute; left: 20px; bottom: 250px; font-family: 'Anton', sans-serif; font-size: 90px; color: transparent; -webkit-text-stroke: 2px rgba(140,180,230,0.16);">?</span>
+
+  <!-- center gold panel -->
+  <div style="position: absolute; top: 0; bottom: 0; left: 300px; right: 300px; background: radial-gradient(125% 115% at 50% 30%, #e8c25c 0%, #d2a028 44%, #a87c24 100%); box-shadow: 0 0 90px rgba(0,0,0,0.6);">
+    <div style="position: absolute; inset: 0; background-image: repeating-linear-gradient(135deg, transparent 0 18px, rgba(255,255,255,0.035) 18px 20px); pointer-events: none;"></div>
+    <div style="position: absolute; inset: 0; background: radial-gradient(120% 110% at 50% 42%, transparent 46%, rgba(90,58,12,0.4) 100%); pointer-events: none;"></div>
+  </div>
+
+  <!-- top presented-by band -->
+  <div style="position: absolute; top: 0; left: 300px; right: 300px; height: 128px; background: linear-gradient(180deg, #c8e6f6, #aed6ee); display: flex; align-items: center; justify-content: center; gap: 20px;">
+    <span style="font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 30px; letter-spacing: 2px; color: #0d1d34;">PRESENTED BY</span>
+    <span style="width: 2px; height: 40px; background: rgba(13,29,52,0.4);"></span>
+    <span style="font-family: 'Anton', sans-serif; font-size: 48px; letter-spacing: 2px; text-transform: uppercase; color: #0d1d34;">Timeless Entertainment</span>
+  </div>
+
+  <!-- TRIVIA NIGHT hero -->
+  <div style="position: absolute; left: 300px; right: 300px; top: 210px; display: flex; flex-direction: column; align-items: center;">
+    <div style="position: relative; display: inline-block;">
+      <span style="display: block; font-family: 'Anton', sans-serif; font-size: 300px; line-height: 0.86; letter-spacing: 2px; text-transform: uppercase; color: #ffffff; text-shadow: 0 8px 0 rgba(120,80,10,0.35), 0 14px 30px rgba(0,0,0,0.4);">TRIVIA</span>
+      <span style="position: absolute; right: -10px; bottom: -78px; font-family: 'Kaushan Script', cursive; font-size: 190px; line-height: 1; color: #1a1408; text-shadow: 0 4px 0 rgba(255,255,255,0.35), 0 10px 24px rgba(0,0,0,0.35);">Night</span>
+    </div>
+  </div>
+
+  <!-- prizes row -->
+  <div style="position: absolute; left: 388px; top: 632px; width: 800px; display: flex; align-items: stretch; gap: 18px;">
+    <div style="flex: 1; border-radius: 14px; padding: 3px; background: linear-gradient(160deg, #f0cb4e, #c8971f);">
+      <div style="border-radius: 11px; background: #0d1d34; padding: 14px 10px 12px; text-align: center;">
+        <div style="font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 26px; letter-spacing: 2px; text-transform: uppercase; color: #ffd257;">1st Place</div>
+        <div style="font-family: 'Anton', sans-serif; font-size: 46px; line-height: 0.95; color: #ffffff;">$30</div>
+        <div style="font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 20px; letter-spacing: 2px; text-transform: uppercase; color: #aecbe8;">Gift Card</div>
+      </div>
+    </div>
+    <div style="flex: 1; border-radius: 14px; padding: 3px; background: linear-gradient(160deg, #d9dde3, #9aa3ad);">
+      <div style="border-radius: 11px; background: #0d1d34; padding: 14px 10px 12px; text-align: center;">
+        <div style="font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 26px; letter-spacing: 2px; text-transform: uppercase; color: #e6ecf3;">2nd Place</div>
+        <div style="font-family: 'Anton', sans-serif; font-size: 46px; line-height: 0.95; color: #ffffff;">$20</div>
+        <div style="font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 20px; letter-spacing: 2px; text-transform: uppercase; color: #aecbe8;">Gift Card</div>
+      </div>
+    </div>
+    <div style="flex: 1; border-radius: 14px; padding: 3px; background: linear-gradient(160deg, #d99a54, #a86a2c);">
+      <div style="border-radius: 11px; background: #0d1d34; padding: 14px 10px 12px; text-align: center;">
+        <div style="font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 26px; letter-spacing: 2px; text-transform: uppercase; color: #f0c090;">3rd Place</div>
+        <div style="font-family: 'Anton', sans-serif; font-size: 46px; line-height: 0.95; color: #ffffff;">$10</div>
+        <div style="font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 20px; letter-spacing: 2px; text-transform: uppercase; color: #aecbe8;">Gift Card</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- bottom schedule band -->
+  <div style="position: absolute; left: 300px; right: 300px; bottom: 150px; height: 150px; background: linear-gradient(180deg, #c8e6f6, #aed6ee); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 8px;">
+    <div style="display: flex; align-items: center; gap: 26px;">
+      <span style="font-family: 'Anton', sans-serif; font-size: 58px; letter-spacing: 1px; text-transform: uppercase; color: #0d1d34;">{{ day }}</span>
+      <span style="width: 4px; height: 52px; background: #0d1d34;"></span>
+      <span style="font-family: 'Anton', sans-serif; font-size: 58px; letter-spacing: 1px; color: #0d1d34;">{{ time }}</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 22px;">
+      <span style="font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 40px; letter-spacing: 4px; text-transform: uppercase; color: #b3121b;">{{ freeText }}</span>
+      <span style="width: 3px; height: 34px; background: rgba(13,29,52,0.35);"></span>
+      <span style="display: inline-flex; align-items: center; font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 30px; letter-spacing: 3px; text-transform: uppercase; color: #0d1d34; background: linear-gradient(160deg, #f0cb4e, #d2a028); border-radius: 999px; padding: 7px 24px; box-shadow: 0 4px 12px rgba(0,0,0,0.35);">{{ rsvpText }}</span>
+    </div>
+  </div>
+
+  <!-- web footer -->
+  <div style="position: absolute; left: 0; right: 0; bottom: 46px; text-align: center;">
+    <span style="font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 40px; letter-spacing: 5px; text-transform: uppercase; color: #f4e6bf;">WWW.LOCALZSPORTSBAR.COM</span>
+  </div>
+
+  <!-- Localz logo (upper left, by the title) -->
+  <img src="uploads/St.peteLogo.webp" alt="Localz Sports Bar &amp; Grill" style="position: absolute; left: 18px; top: 250px; height: 340px; width: auto; object-fit: contain; filter: drop-shadow(0 8px 22px rgba(0,0,0,0.7));">
+
+  <!-- ===== WIENER WEDNESDAY: Chicago dog + badge (right) ===== -->
+  <div style="position: absolute; right: 78px; bottom: 200px; width: 400px; height: 400px;">
+    <div style="position: absolute; inset: 0; border-radius: 50%; padding: 5px; background: linear-gradient(150deg, #f0cb4e, #c8971f);">
+      <div style="position: relative; width: 100%; height: 100%; border-radius: 50%; overflow: hidden; background: radial-gradient(70% 70% at 50% 45%, #e8c25c 0%, #d2a028 55%, #a87c24 100%);">
+        <img src="uploads/CHICAGO DOG cutout.webp" alt="Chicago Dog" style="position: absolute; inset: -8%; width: 116%; height: 116%; object-fit: cover; object-position: center 48%; filter: drop-shadow(0 12px 20px rgba(0,0,0,0.4));">
+        <div style="position: absolute; inset: 0; border-radius: 50%; box-shadow: inset 0 0 90px 26px rgba(0,0,0,0.4); pointer-events: none;"></div>
+      </div>
+    </div>
+    <!-- price starburst badge -->
+    <div style="position: absolute; left: -46px; top: -104px; width: 196px; height: 196px; animation: lz-badgepulse 3.4s ease-in-out infinite;">
+      <div style="position: absolute; inset: 0; border-radius: 50%; background: radial-gradient(circle at 50% 40%, #d4141d 0%, #9c0d13 70%); box-shadow: 0 10px 26px rgba(0,0,0,0.55), 0 0 0 6px rgba(232,185,58,0.9);"></div>
+      <div style="position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 10px;">
+        <span style="font-family: 'Barlow Condensed', sans-serif; font-weight: 800; font-size: 24px; letter-spacing: 2px; text-transform: uppercase; color: #ffd257; line-height: 1;">Wiener<br>Wednesday</span>
+        <span style="font-family: 'Anton', sans-serif; font-size: 74px; line-height: 0.9; color: #ffffff; text-shadow: 0 2px 0 rgba(0,0,0,0.3);">{{ wienerPrice }}</span>
+        <span style="font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 18px; letter-spacing: 2px; text-transform: uppercase; color: #ffe4a3; line-height: 1;">Chicago Dog</span>
+      </div>
+    </div>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1920,&quot;height&quot;:1080},&quot;day&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;EVERY WEDNESDAY&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;time&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;7:30 PM&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;freeText&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;Always Free To Play!&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;rsvpText&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;RSVP For Tables&quot;,&quot;tsType&quot;:&quot;string&quot;},&quot;wienerPrice&quot;:{&quot;editor&quot;:&quot;text&quot;,&quot;default&quot;:&quot;$11&quot;,&quot;tsType&quot;:&quot;string&quot;}}">
+class Component extends DCLogic {
+  componentDidMount() {
+    const fit = () => {
+      const el = document.getElementById('lz-stage');
+      if (!el) return;
+      const s = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+      el.style.transform = 'scale(' + s + ')';
+    };
+    fit();
+    window.addEventListener('resize', fit);
+  }
+  renderVals() {
+    const p = this.props || {};
+    return {
+      day: p.day ?? "EVERY WEDNESDAY",
+      time: p.time ?? "7:30 PM",
+      freeText: p.freeText ?? "Always Free To Play!",
+      wienerPrice: p.wienerPrice ?? "$11",
+      rsvpText: p.rsvpText ?? "RSVP For Tables"
+    };
+  }
+}
+</script>
+</body>
+</html>

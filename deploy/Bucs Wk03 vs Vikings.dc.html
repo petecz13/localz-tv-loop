@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@500;600;700&family=Barlow+Semi+Condensed:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { background: #060b18; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  a { color: #f5a623; }
+  a:hover { color: #ffd166; }
+  @keyframes bv-pulse { 0%,100% { text-shadow: 0 0 20px rgba(213,10,10,0.5), 0 10px 26px rgba(0,0,0,0.8); } 50% { text-shadow: 0 0 40px rgba(213,10,10,0.9), 0 10px 26px rgba(0,0,0,0.8); } }
+  @keyframes bv-drift { 0%,100% { transform: translate(0,0); } 50% { transform: translate(24px,-18px); } }
+</style>
+</helmet>
+
+<div id="bv-stage" style="position: relative; width: 1920px; height: 1080px; overflow: hidden; background: radial-gradient(130% 110% at 50% -10%, #17295b 0%, #0b1530 55%, #070c1c 100%); font-family: 'Barlow Semi Condensed', sans-serif; transform-origin: center center;">
+
+  <div style="position: absolute; top: -200px; left: -140px; width: 760px; height: 760px; border-radius: 50%; background: radial-gradient(circle, rgba(213,10,10,0.2), transparent 70%); filter: blur(14px); animation: bv-drift 12s ease-in-out infinite;"></div>
+  <div style="position: absolute; bottom: -220px; right: -140px; width: 760px; height: 760px; border-radius: 50%; background: radial-gradient(circle, rgba(245,166,35,0.18), transparent 70%); filter: blur(14px); animation: bv-drift 14s ease-in-out infinite reverse;"></div>
+  <div style="position: absolute; inset: 0; background-image: repeating-linear-gradient(120deg, transparent 0 22px, rgba(255,255,255,0.026) 22px 24px); pointer-events: none;"></div>
+  <div style="position: absolute; top: 0; left: 0; right: 0; height: 10px; background: linear-gradient(90deg, #b8860b, #f5a623, #ffd166, #b8860b);"></div>
+
+  <div style="position: absolute; top: 58px; left: 0; right: 0; display: flex; align-items: center; justify-content: center; gap: 26px;">
+    <span style="width: 120px; height: 3px; background: rgba(245,166,35,0.6);"></span>
+    <span style="font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 34px; letter-spacing: 10px; text-transform: uppercase; color: #9fb6d6;">Week 3 &#8226; Raymond James Stadium</span>
+    <span style="width: 120px; height: 3px; background: rgba(245,166,35,0.6);"></span>
+  </div>
+
+  <div style="position: absolute; top: 140px; left: 0; right: 0; display: flex; align-items: center; justify-content: center; gap: 44px; padding: 0 60px;">
+    <img src="uploads/bucs-helmet-clean.webp" alt="Bucs helmet" style="width: 300px; height: 300px; object-fit: contain; flex: 0 0 auto; filter: drop-shadow(0 16px 34px rgba(0,0,0,0.7));">
+    <div style="display: flex; flex-direction: column; align-items: center; line-height: 0.82;">
+      <span style="font-family: 'Anton', sans-serif; font-size: 230px; letter-spacing: -2px; text-transform: uppercase; color: #d50a0a; animation: bv-pulse 4s ease-in-out infinite;">BUCS</span>
+      <span style="margin: 10px 0; font-family: 'Anton', sans-serif; font-size: 58px; letter-spacing: 12px; text-transform: uppercase; color: #f5a623;">VS</span>
+      <span style="font-family: 'Anton', sans-serif; font-size: 230px; letter-spacing: -2px; text-transform: uppercase; color: #f4f7ff; text-shadow: 0 10px 26px rgba(0,0,0,0.8);">VIKINGS</span>
+    </div>
+    <img src="uploads/vikings-helmet-transparent.webp" alt="Vikings helmet" style="width: 300px; height: 300px; object-fit: contain; flex: 0 0 auto; filter: drop-shadow(0 16px 34px rgba(0,0,0,0.7));">
+  </div>
+
+  <div style="position: absolute; top: 716px; left: 0; right: 0; display: flex; justify-content: center;">
+    <div style="padding: 14px 58px; background: linear-gradient(90deg, #d8901a, #f5a623 50%, #d8901a); border-radius: 8px; box-shadow: 0 16px 34px rgba(0,0,0,0.5);">
+      <span style="font-family: 'Anton', sans-serif; font-size: 50px; letter-spacing: 5px; text-transform: uppercase; color: #0b1530;">Sunday Sept 27 &#8226; 4:05 PM &#8226; FOX</span>
+    </div>
+  </div>
+
+  <div style="position: absolute; top: 826px; left: 60px; right: 60px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;">
+    <div style="display: flex; align-items: center; gap: 22px; padding: 18px 28px; border-radius: 16px; background: rgba(255,255,255,0.055); border-left: 8px solid #f5a623;">
+      <span style="font-family: 'Anton', sans-serif; font-size: 82px; line-height: 1; color: #ffffff;">$23</span>
+      <span style="font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 30px; line-height: 1.1; letter-spacing: 1px; text-transform: uppercase; color: #cfe0f5;">Bud / Bud Light / Ultra Buckets</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 22px; padding: 18px 28px; border-radius: 16px; background: rgba(255,255,255,0.055); border-left: 8px solid #f5a623;">
+      <span style="font-family: 'Anton', sans-serif; font-size: 82px; line-height: 1; color: #ffffff;">$26</span>
+      <span style="font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 30px; line-height: 1.1; letter-spacing: 1px; text-transform: uppercase; color: #cfe0f5;">Corona / Modelo / Nutrl Buckets</span>
+    </div>
+    <div style="display: flex; align-items: center; gap: 22px; padding: 18px 28px; border-radius: 16px; background: rgba(255,255,255,0.055); border-left: 8px solid #f5a623;">
+      <span style="font-family: 'Anton', sans-serif; font-size: 82px; line-height: 1; color: #ffffff;">$32</span>
+      <span style="font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 30px; line-height: 1.1; letter-spacing: 1px; text-transform: uppercase; color: #cfe0f5;">Surfside / Superlyte Buckets</span>
+    </div>
+  </div>
+
+  <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 86px; display: flex; align-items: center; gap: 28px; padding: 0 60px; background: rgba(255,255,255,0.05); border-top: 2px solid rgba(245,166,35,0.55);">
+    <img src="uploads/St.peteLogo.webp" alt="Localz Sports Bar &amp; Grill" style="height: 70px; width: auto; object-fit: contain; flex: 0 0 auto; filter: drop-shadow(0 4px 14px rgba(0,0,0,0.7));">
+    <span style="font-family: 'Anton', sans-serif; font-size: 34px; letter-spacing: 4px; text-transform: uppercase; color: #f5a623;">Your Bucs Home in DTSP</span>
+    <span style="margin-left: auto; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 30px; letter-spacing: 5px; text-transform: uppercase; color: #9fb6d6;">WWW.LOCALZSPORTSBAR.COM</span>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1920,&quot;height&quot;:1080}}">
+class Component extends DCLogic {
+  componentDidMount() {
+    const fit = () => {
+      const el = document.getElementById('bv-stage');
+      if (!el) { requestAnimationFrame(fit); return; }
+      const w = window.innerWidth || document.documentElement.clientWidth;
+      const h = window.innerHeight || document.documentElement.clientHeight;
+      const s = Math.min(w / 1920, h / 1080);
+      if (!s || !isFinite(s)) { requestAnimationFrame(fit); return; }
+      el.style.transform = 'scale(' + s + ')';
+    };
+    fit();
+    window.addEventListener('resize', fit);
+    if (window.ResizeObserver) new ResizeObserver(fit).observe(document.documentElement);
+  }
+  renderVals() { return {}; }
+}
+
+</script>
+</body>
+</html>

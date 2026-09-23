@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<template id="__bundler_thumbnail"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#0c1631"/><circle cx="50" cy="50" r="30" fill="#e0b23c"/></svg></template>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@500;600;700&family=Barlow+Semi+Condensed:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { background: #0b1626; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  @keyframes lz-sheen { 0% { transform: translateX(-120%) skewX(-18deg); } 55%,100% { transform: translateX(320%) skewX(-18deg); } }
+  @keyframes lz-flick { 0%,100% { opacity: .9; } 50% { opacity: .55; } }
+</style>
+</helmet>
+
+<div id="lz-stage" style="position: relative; width: 1920px; height: 1080px; overflow: hidden; background: radial-gradient(120% 120% at 74% 38%, #1b3358 0%, #102541 42%, #0a1322 100%); font-family: 'Barlow Semi Condensed', sans-serif; transform-origin: center center;">
+
+  <!-- pinstripe texture -->
+  <div style="position: absolute; inset: 0; background-image: repeating-linear-gradient(62deg, transparent 0 46px, rgba(232,185,74,0.20) 46px 48px); pointer-events: none;"></div>
+  <!-- right-side darkening -->
+  <div style="position: absolute; inset: 0; background: radial-gradient(120% 100% at 70% 50%, transparent 45%, rgba(5,11,20,0.62) 100%); pointer-events: none;"></div>
+
+  <!-- GOLD photo panel (picture side) -->
+  <div style="position: absolute; top: -2px; left: -2px; width: 794px; height: 1084px; clip-path: polygon(0 0, 80% 0, 96% 100%, 0 100%); background: linear-gradient(200deg, #f2c85b, #d89f36 55%, #a9761f); box-shadow: 30px 0 60px rgba(0,0,0,0.45);"></div>
+  <!-- dark keyline -->
+  <div style="position: absolute; top: -2px; left: -2px; width: 780px; height: 1084px; clip-path: polygon(0 0, 80% 0, 96% 100%, 0 100%); background: #0a1322;"></div>
+  <!-- photo + effects clipped to diagonal -->
+  <div style="position: absolute; top: 0; left: 0; width: 760px; height: 1080px; clip-path: polygon(0 0, 80% 0, 96% 100%, 0 100%); overflow: hidden;">
+    <div style="position: absolute; inset: 0; background: radial-gradient(72% 56% at 46% 46%, #d89f36 0%, #a9761f 45%, #6b4a12 100%);"></div><div style="position:absolute;inset:0;background-image:repeating-linear-gradient(135deg, transparent 0, transparent 18px, rgba(13,29,52,0.10) 18px, rgba(13,29,52,0.10) 20px);"></div>
+    <div style="position: absolute; left: 50%; top: 44%; width: 120%; height: 78%; transform: translate(-50%,-50%); border-radius: 50%; background: radial-gradient(closest-side, rgba(232,185,74,0.22), rgba(232,185,74,0.06) 55%, transparent 72%); pointer-events: none;"></div>
+    <img src="uploads/AVOCADO CAESAR SALAD.webp" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 35%;">
+    <div style="position: absolute; inset: 0; background: linear-gradient(255deg, rgba(8,18,31,0.92) 0%, rgba(8,18,31,0.42) 16%, transparent 40%);"></div>
+    <div style="position: absolute; top: -10%; right: 0; width: 36%; height: 120%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.16), transparent); animation: lz-sheen 6.5s ease-in-out infinite;"></div>
+  </div>
+
+  <!-- Localz logo -->
+  <img src="uploads/St.peteLogo.webp" alt="Localz Sports Bar &amp; Grill" style="position: absolute; top: 60px; left: 660px; height: 260px; width: auto; object-fit: contain; filter: drop-shadow(0 6px 18px rgba(0,0,0,0.65));">
+
+  <!-- top gold trim (reversed) -->
+  <div style="position: absolute; top: 0; left: 0; width: 100%; height: 8px; background: linear-gradient(270deg, #e8b94a, #c8902f 60%, transparent);"></div>
+
+  <!-- RIGHT content — right-aligned, vertically centred -->
+  <div style="position: absolute; right: 118px; top: 0; width: 1010px; height: 1080px; display: flex; flex-direction: column; align-items: flex-end; justify-content: center; text-align: right;">
+
+    <!-- eyebrow (reversed: line | tag) -->
+    <div style="display: flex; align-items: center; gap: 18px;">
+      <span style="height: 3px; flex: 1; max-width: 230px; background: linear-gradient(90deg, transparent, #e8b94a);"></span>
+      <span style="display: inline-flex; align-items: center; background: linear-gradient(160deg, #e8b94a, #cf9a32); color: #0d1d34; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 27px; letter-spacing: 6px; padding: 9px 30px 7px; white-space: nowrap; flex-shrink: 0; clip-path: polygon(3% 0, 100% 0, 97% 100%, 0 100%);">SIGNATURE SALAD</span>
+    </div>
+
+    <h1 style="margin-top: 22px; font-family: 'Anton', sans-serif; font-weight: 400; line-height: 0.84; letter-spacing: -1px; text-transform: uppercase;">
+      <span style="display: block; font-size: 116px; color: #f4eddc; text-shadow: 0 4px 0 rgba(0,0,0,0.35);">AVOCADO</span>
+      <span style="display: block; font-size: 176px; color: #e8b94a; text-shadow: 0 5px 0 rgba(0,0,0,0.4), 0 0 38px rgba(232,185,74,0.25);">CAESAR</span>
+    </h1>
+
+    <p style="margin-top: 24px; max-width: 780px; font-family: 'Barlow Semi Condensed', sans-serif; font-weight: 500; font-size: 32px; line-height: 1.3; color: #cfe0f3; text-wrap: pretty;">Crisp romaine, shredded parmesan and fresh tomato in our house-made avocado caesar dressing, topped with garlic croutons.</p>
+
+    <!-- sauce tag (reversed: text | diamond) -->
+    <div style="display: flex; align-items: center; gap: 14px; margin-top: 24px; justify-content: flex-end;">
+      <span style="font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 28px; letter-spacing: 3px; text-transform: uppercase; color: #b3cdeb;">Add Grilled Chicken · Add Shrimp</span>
+      <span style="width: 16px; height: 16px; transform: rotate(45deg); background: #e8b94a; flex-shrink: 0; animation: lz-flick 2.6s ease-in-out infinite;"></span>
+    </div>
+
+
+  </div>
+
+  <!-- bottom ribbon -->
+  <div style="position: absolute; left: 0; bottom: 0; width: 100%; height: 96px; background: linear-gradient(90deg, rgba(10,19,34,0), #0a1322 30%, #0a1322 70%, rgba(10,19,34,0)); display: flex; align-items: center; justify-content: center;">
+    <span style="font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 44px; letter-spacing: 5px; text-transform: uppercase; color: #cfe0f3;">WWW.LOCALZSPORTSBAR.COM</span>
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1920,&quot;height&quot;:1080}}">class Component extends DCLogic {
+  componentDidMount() {
+    const fit = () => {
+      const el = document.getElementById('lz-stage');
+      if (!el) return;
+      const s = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+      el.style.transform = 'scale(' + s + ')';
+    };
+    fit();
+    window.addEventListener('resize', fit);
+  }
+}</script>
+</body>
+</html>

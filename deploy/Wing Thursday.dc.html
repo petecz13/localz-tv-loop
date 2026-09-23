@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@500;600;700&family=Barlow+Semi+Condensed:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { background: #04060e; }
+  @keyframes wt-glow { 0%,100% { box-shadow: 0 0 30px rgba(255,122,31,0.55), inset 0 0 18px rgba(255,122,31,0.25); } 50% { box-shadow: 0 0 60px rgba(255,122,31,0.95), inset 0 0 24px rgba(255,122,31,0.4); } }
+</style>
+</helmet>
+<div style="position: relative; width: 1920px; height: 1080px; overflow: hidden; background: #0a1526; border: 30px solid #e0b23c; box-shadow: inset 0 0 0 3px rgba(0,0,0,0.35); font-family: 'Barlow Semi Condensed', sans-serif;">
+
+  <!-- ============ BIG PHOTO GRID (fills almost whole frame) ============ -->
+  <div style="position: absolute; inset: 0; display: grid; grid-template-columns: 1.35fr 1fr; grid-template-rows: 1fr; min-height: 0; gap: 10px;">
+    <div style="overflow: hidden; min-height: 0;"><img src="uploads/wing-thursday-tallow.webp" alt="Beef tallow fried wings" style="width: 100%; height: 100%; object-fit: cover; object-position: 50% 55%;"></div>
+    <div style="display: grid; grid-template-rows: 1fr 1fr; min-height: 0; gap: 10px;">
+      <div style="overflow: hidden; min-height: 0;"><img src="uploads/wing-thursday-2.webp" alt="Buffalo parmesan wings" style="width: 100%; height: 100%; object-fit: cover; object-position: 50% 40%;"></div>
+      <div style="overflow: hidden; min-height: 0;"><img src="uploads/wing-thursday-3.webp" alt="Hot honey wings" style="width: 100%; height: 100%; object-fit: cover; object-position: 50% 42%;"></div>
+    </div>
+  </div>
+
+  <!-- top + bottom scrim for text legibility -->
+  <div style="position: absolute; top: 0; left: 0; right: 0; height: 240px; background: linear-gradient(180deg, rgba(6,12,22,0.92), transparent);"></div>
+  <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 360px; background: linear-gradient(0deg, rgba(6,12,22,0.94), transparent);"></div>
+
+  <!-- ============ TOP BAR: logo + title ============ -->
+  <div style="position: absolute; top: 34px; left: 50px; right: 50px; display: flex; align-items: center; gap: 40px;">
+    <img src="uploads/St.peteLogo.webp" alt="Localz Sports Bar & Grill" style="height: 190px; width: auto; object-fit: contain; flex: 0 0 auto; filter: drop-shadow(0 4px 14px rgba(0,0,0,0.7));">
+    <h1 style="margin-left: auto; font-family: 'Anton', sans-serif; font-weight: 400; font-size: 130px; line-height: 1; letter-spacing: 2px; text-transform: uppercase; display: flex; gap: 24px; text-shadow: 0 6px 20px rgba(0,0,0,0.8);">
+      <span style="color: #e0b23c;">$1</span>
+      <span style="color: #f4ecd8;">WING</span>
+      <span style="color: #e0b23c;">THURSDAY</span>
+    </h1>
+  </div>
+
+  <!-- ============ BOTTOM BAR: prices + tallow badge ============ -->
+  <div style="position: absolute; bottom: 44px; left: 50px; right: 50px; display: flex; align-items: center; justify-content: space-between; gap: 40px;">
+    <div style="display: flex; align-items: center; gap: 48px;">
+      <span style="display: flex; align-items: baseline; gap: 18px;">
+        <span style="font-family: 'Anton', sans-serif; font-size: 118px; line-height: 1; color: #ffd45c; text-shadow: 0 0 16px rgba(240,176,40,0.6), 0 6px 16px rgba(0,0,0,0.8);">$1</span>
+        <span style="font-family: 'Anton', sans-serif; font-size: 48px; line-height: 1; letter-spacing: 1px; text-transform: uppercase; color: #f4ecd8; text-shadow: 0 4px 12px rgba(0,0,0,0.8);">Per Wing</span>
+      </span>
+      <span style="width: 3px; height: 74px; background: rgba(224,178,60,0.5);"></span>
+      <span style="display: flex; align-items: baseline; gap: 18px;">
+        <span style="font-family: 'Anton', sans-serif; font-size: 118px; line-height: 1; color: #ffd45c; text-shadow: 0 0 16px rgba(240,176,40,0.6), 0 6px 16px rgba(0,0,0,0.8);">$9</span>
+        <span style="font-family: 'Anton', sans-serif; font-size: 48px; line-height: 1; letter-spacing: 1px; text-transform: uppercase; color: #f4ecd8; text-shadow: 0 4px 12px rgba(0,0,0,0.8);">Half Pound</span>
+      </span>
+    </div>
+
+    <span style="display: flex; align-items: center; padding: 26px 64px; border-radius: 22px; border: 5px solid #ffb877; background: linear-gradient(135deg, rgba(255,122,31,0.32), rgba(20,10,4,0.7)); box-shadow: 0 0 0 3px rgba(20,10,4,0.6); animation: wt-glow 3.5s ease-in-out infinite;">
+      <span style="font-family: 'Anton', sans-serif; font-size: 88px; line-height: 1.02; letter-spacing: 1px; text-transform: uppercase; color: #ffe0bd; text-shadow: 0 0 26px rgba(255,140,40,0.95), 0 0 46px rgba(255,90,20,0.6); white-space: nowrap;">Fried in Beef Tallow</span>
+    </span>
+  </div>
+
+  <div style="position: absolute; bottom: 8px; left: 50px; font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 26px; letter-spacing: 3px; text-transform: uppercase; color: #d8c9a8; text-shadow: 0 3px 10px rgba(0,0,0,0.8);">9 Wings Per Order</div>
+
+</div>
+
+</x-dc>
+</body>
+</html>
