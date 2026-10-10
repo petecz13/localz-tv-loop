@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Beach Bar Now Open</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 100%; height: 100%; background: #0d1f38; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+  @keyframes nb-glow { 0%,100% { text-shadow: 0 8px 0 #c12231, 0 18px 40px rgba(0,0,0,.45); } 50% { text-shadow: 0 8px 0 #c12231, 0 18px 60px rgba(43,181,208,.65); } }
+  @keyframes nb-float { 0%,100% { transform: rotate(-1.5deg) translateY(0); } 50% { transform: rotate(-1.5deg) translateY(-10px); } }
+  @keyframes nb-shine { 0% { transform: translateX(-120%) skewX(-20deg); } 60%,100% { transform: translateX(260%) skewX(-20deg); } }
+
+  #stage { position: relative; width: 1920px; height: 1080px; overflow: hidden; transform-origin: center center;
+    background: radial-gradient(120% 90% at 70% 10%, #1f6f8f 0%, #16466b 38%, #0d1f38 80%); font-family: 'Barlow Condensed', sans-serif; }
+  .waves { position: absolute; inset: 0; pointer-events: none; opacity: .09;
+    background-image: repeating-radial-gradient(circle at 15% 120%, transparent 0 38px, #fff 38px 41px); }
+
+  .banner { position: absolute; top: 34px; left: 60px; right: 60px; height: 222px; border-radius: 14px; overflow: hidden;
+    box-shadow: 0 18px 40px rgba(0,0,0,.45); border: 4px solid #f4eedf; }
+  .banner img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+  .left { position: absolute; top: 300px; left: 80px; width: 840px; }
+  .kicker { display: inline-block; padding: 8px 26px; background: #c12231; color: #fff; font-weight: 700; font-size: 34px;
+    letter-spacing: 8px; text-transform: uppercase; border-radius: 6px; }
+  .now { margin-top: 10px; font-family: 'Anton', sans-serif; font-size: 210px; line-height: 1; white-space: nowrap; color: #f4eedf;
+    text-transform: uppercase; letter-spacing: -1px; animation: nb-glow 4s ease-in-out infinite; }
+  .addr { margin-top: 24px; font-weight: 700; font-size: 44px; letter-spacing: 4px; color: #8fe0f0; text-transform: uppercase; }
+  .tag { margin-top: 6px; font-weight: 600; font-size: 32px; letter-spacing: 6px; color: #f4eedf; opacity: .85; text-transform: uppercase; }
+
+  .top { position: absolute; top: 300px; right: 70px; width: 860px; animation: nb-float 6s ease-in-out infinite; }
+  .top .frame { position: relative; padding: 14px; background: #1a3357; border-radius: 16px; box-shadow: 0 30px 60px rgba(0,0,0,.55); overflow: hidden; }
+  .top img { display: block; width: 100%; border-radius: 6px; }
+  .top .frame::after { content: ''; position: absolute; top: 0; bottom: 0; width: 30%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,.35), transparent); animation: nb-shine 7s ease-in-out infinite; }
+
+  .week { position: absolute; left: 60px; right: 60px; top: 815px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+  .day { padding: 22px 26px; background: rgba(13,31,56,.88); border-radius: 14px; border-top: 7px solid #c12231; }
+  .day b { display: block; font-family: 'Anton', sans-serif; font-weight: 400; font-size: 46px; color: #fff; letter-spacing: 1px; text-transform: uppercase; line-height: 1.05; }
+  .day span { display: block; margin-top: 4px; font-weight: 600; font-size: 28px; color: #8fe0f0; letter-spacing: 1px; text-transform: uppercase; }
+
+  .foot { position: absolute; left: 0; right: 0; bottom: 0; height: 76px; padding: 0 60px; background: #f4eedf;
+    display: flex; align-items: center; justify-content: space-between; }
+  .foot div { font-weight: 700; font-size: 32px; letter-spacing: 4px; color: #1a3357; text-transform: uppercase; }
+  .foot .red { color: #c12231; }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="waves"></div>
+
+  <div class="banner"><img src="uploads/cbb-bar-banner.webp" alt="Clearwater Beach Bar"></div>
+
+  <div class="left">
+    <div class="kicker">The wait is over</div>
+    <div class="now">Now Open</div>
+    <div class="addr">411 Mandalay Ave &#8226; Clearwater Beach</div>
+    <div class="tag">High Tides &amp; Good Vibes</div>
+  </div>
+
+  <div class="top"><div class="frame"><img src="uploads/cbb-tabletop.webp" alt="Beach Bar table top"></div></div>
+
+  <div class="week">
+    <div class="day"><b>Wednesday</b><span>$5 Superlyte</span></div>
+    <div class="day"><b>Thursday</b><span>THC Thursdays &#8226; 25% Off</span></div>
+    <div class="day"><b>Fri &amp; Sat</b><span>DJ 9PM&#8211;3AM &#8226; Shot Specials</span></div>
+    <div class="day"><b>Sunday</b><span>NFL Sunday Ticket &#8226; Buckets</span></div>
+  </div>
+
+  <div class="foot">
+    <div>Wed&#8211;Fri 6PM <span class="red">&#9733;</span> Sat 4PM <span class="red">&#9733;</span> Sun Noon <span class="red">&#9733;</span> Til 3AM</div>
+    <div class="red">@clearwaterbeachbarusa</div>
+  </div>
+</div>
+<script>
+  (function () {
+    var el = document.getElementById('stage');
+    function fit() {
+      var s = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+      if (s && isFinite(s)) el.style.transform = 'scale(' + s + ')';
+    }
+    fit(); window.addEventListener('resize', fit);
+  })();
+</script>
+</body>
+</html>
