@@ -16,6 +16,8 @@
   html, body { background: #06101f; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden; }
   @keyframes wt-spin { 0%,100% { transform: rotate(var(--r)); } 50% { transform: rotate(calc(var(--r) + 6deg)); } }
   .wt-plate { animation: wt-spin 7s ease-in-out infinite; }
+  @keyframes wt-heat { 0%,100% { transform: scale(1); } 50% { transform: scale(1.03); } }
+  .wt-tallow { animation: wt-heat 2.4s ease-in-out infinite; transform-origin: left center; }
 </style>
 </helmet>
 
@@ -46,9 +48,15 @@
       </div>
     </div>
 
-    <div style="margin-top: 40px; display: inline-flex; align-items: center; gap: 18px; padding: 14px 32px; border-radius: 14px; background: rgba(12,35,64,0.85); border: 3px solid #F2AF32;">
-      <span style="display: inline-block; width: 22px; height: 30px; border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%; background: radial-gradient(circle at 50% 70%, #ffd166, #f07a1a 60%, #d62828);"></span>
-      <span style="font-family: 'Anton', sans-serif; font-size: 50px; letter-spacing: 3px; text-transform: uppercase; color: #ffffff;">Fried in Beef Tallow</span>
+    <div class="wt-tallow" style="margin-top: 36px; display: inline-flex; padding-right: 54px; align-items: center; gap: 26px; padding: 22px 36px; border-radius: 18px; background: linear-gradient(100deg, #d62828 0%, #f07a1a 60%, #ffb02e 100%); border: 4px solid #ffd166; box-shadow: 0 0 40px rgba(240,122,26,0.65), 0 18px 34px rgba(0,0,0,0.45);">
+      <svg width="70" height="92" viewBox="0 0 70 92" style="flex: none; filter: drop-shadow(0 0 12px rgba(255,200,80,0.9));">
+        <path d="M35 2 C40 22 62 32 62 58 C62 77 50 90 35 90 C20 90 8 77 8 58 C8 44 16 36 22 30 C22 42 28 48 32 48 C28 34 30 16 35 2 Z" fill="#ffd166"/>
+        <path d="M35 40 C38 52 50 58 50 70 C50 81 43 88 35 88 C27 88 20 81 20 71 C20 63 25 58 28 55 C29 62 32 65 35 65 C33 57 33 48 35 40 Z" fill="#fff4d6"/>
+      </svg>
+      <div style="display: flex; flex-direction: column; line-height: 1;">
+        <span style="font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 34px; letter-spacing: 8px; text-transform: uppercase; color: #fff4d6;">Fried in</span>
+        <span style="font-family: 'Anton', sans-serif; font-size: 96px; letter-spacing: 3px; text-transform: uppercase; color: #ffffff; text-shadow: 0 5px 0 rgba(90,10,0,0.55);">Beef Tallow</span>
+      </div>
     </div>
   </div>
 
