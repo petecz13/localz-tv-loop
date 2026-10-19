@@ -14,61 +14,98 @@
 <script src="./image-slot.js"></script>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html, body { background: #050810; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden; }
-  a { color: #5ef2ff; }
-  a:hover { color: #9df9ff; }
-  @keyframes fp-drift1 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(26px,-20px); } }
-  @keyframes fp-drift2 { 0%,100% { transform: translate(0,0); } 50% { transform: translate(-24px,18px); } }
-  @keyframes fp-glow { 0%,100% { text-shadow: 0 0 18px rgba(255,209,102,0.85), 0 0 46px rgba(255,209,102,0.5); } 50% { text-shadow: 0 0 30px rgba(255,209,102,1), 0 0 70px rgba(255,209,102,0.75); } }
-  @keyframes fp-pop { 0%,100% { transform: scale(1) rotate(-4deg); } 50% { transform: scale(1.04) rotate(-4deg); } }
+  html, body { background: #06101f; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  @keyframes fp-glow { 0%,100% { text-shadow: 0 0 22px rgba(242,175,50,0.75), 0 8px 0 #071528; } 50% { text-shadow: 0 0 44px rgba(242,175,50,1), 0 8px 0 #071528; } }
+  @keyframes fp-strike { 0%, 55% { transform: translateX(-60px); } 68% { transform: translateX(8px); } 76%, 100% { transform: translateX(-4px); } }
+  @keyframes fp-roll { 0%, 66% { transform: translateX(0); } 100% { transform: translateX(22px); } }
+  @keyframes fp-lamp { 0%,100% { opacity: .85; } 50% { opacity: 1; } }
+  .fp-stick { animation: fp-strike 4s cubic-bezier(.5,0,.2,1) infinite; }
+  .fp-cueball { animation: fp-roll 4s ease-out infinite; }
 </style>
 </helmet>
 
-<div id="fp-stage" style="position: relative; width: 1920px; height: 1080px; overflow: hidden; background: radial-gradient(120% 100% at 50% 0%, #1c2c56 0%, #101a34 60%); font-family: 'Barlow Semi Condensed', sans-serif; transform-origin: center center;">
+<div id="fp-stage" style="position: relative; width: 1920px; height: 1080px; overflow: hidden; background: radial-gradient(90% 80% at 72% 40%, #12305e 0%, #0a1c3a 55%, #050d1c 100%); font-family: 'Barlow Semi Condensed', sans-serif; transform-origin: center center;">
 
-  <div style="position: absolute; top: -150px; left: -110px; width: 600px; height: 600px; border-radius: 50%; background: radial-gradient(circle, rgba(94,242,255,0.5), transparent 70%); filter: blur(10px); animation: fp-drift1 9s ease-in-out infinite;"></div>
-  <div style="position: absolute; bottom: -170px; right: -100px; width: 580px; height: 580px; border-radius: 50%; background: radial-gradient(circle, rgba(255,60,150,0.45), transparent 70%); filter: blur(10px); animation: fp-drift2 10s ease-in-out infinite;"></div>
-  <div style="position: absolute; inset: 0; background-image: repeating-linear-gradient(120deg, transparent 0 22px, rgba(255,255,255,0.03) 22px 24px); pointer-events: none;"></div>
+  <div style="position: absolute; inset: 0; background-image: repeating-linear-gradient(120deg, transparent 0 22px, rgba(255,255,255,0.025) 22px 24px); pointer-events: none;"></div>
+  <div style="position: absolute; top: 0; left: 0; right: 0; height: 10px; background: #F2AF32;"></div>
 
-  <div style="position: relative; z-index: 2; flex: 1; height: 780px; display: flex; align-items: center; justify-content: space-between; padding: 0 90px; gap: 40px;">
+  <!-- lamp glow over the table -->
+  <div style="position: absolute; top: 40px; left: 930px; width: 900px; height: 820px; border-radius: 50%; background: radial-gradient(closest-side, rgba(120,190,255,0.28), transparent); animation: fp-lamp 5s ease-in-out infinite;"></div>
 
-    <div style="flex: 1; display: flex; flex-direction: column; align-items: flex-start; max-width: 900px; margin-top: 160px;">
-      <h1 style="font-family: 'Anton', sans-serif; font-weight: 400; line-height: 0.86; text-transform: uppercase;">
-        <span style="display: block; font-size: 100px; color: #f2f6ff;">FREE POOL</span>
-        <span style="display: block; font-size: 132px; color: #ffd166; animation: fp-glow 3s ease-in-out infinite;">MONDAYS</span>
-      </h1>
-
-      <div style="margin-top: 40px; display: flex; align-items: center; gap: 28px;">
-        <div style="position: relative; display: flex; align-items: baseline; gap: 14px; padding: 18px 40px; border-radius: 18px; background: linear-gradient(135deg, #1c3a5e, #0e1f38); border: 2px solid rgba(94,242,255,0.6); box-shadow: 0 0 30px rgba(94,242,255,0.35), 0 16px 32px rgba(0,0,0,0.5); transform: rotate(-4deg); animation: fp-pop 3.4s ease-in-out infinite;">
-          <span style="font-family: 'Anton', sans-serif; font-size: 64px; color: #fff; line-height: 1;">ALL TABLES</span>
-        </div>
-        <span style="font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 34px; letter-spacing: 1px; color: #cfe0f2;">All Day</span>
+  <!-- left: copy -->
+  <div style="position: absolute; top: 96px; left: 96px; width: 860px;">
+    <div style="display: flex; align-items: center; gap: 18px;">
+      <span style="width: 70px; height: 4px; background: #F2AF32;"></span>
+      <span style="font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 34px; letter-spacing: 10px; text-transform: uppercase; color: #9fc3ee;">Every Monday</span>
+    </div>
+    <div style="margin-top: 18px; font-family: 'Anton', sans-serif; text-transform: uppercase; line-height: 0.9;">
+      <div style="font-size: 190px; color: #ffffff; letter-spacing: 2px;">FREE POOL</div>
+      <div style="font-size: 190px; color: #F2AF32; letter-spacing: 2px; animation: fp-glow 3s ease-in-out infinite;">MONDAYS</div>
+    </div>
+    <div style="margin-top: 34px; display: flex; gap: 22px;">
+      <div style="padding: 16px 34px; border-radius: 14px; background: #F2AF32; box-shadow: 0 14px 30px rgba(0,0,0,0.4);">
+        <span style="font-family: 'Anton', sans-serif; font-size: 58px; letter-spacing: 3px; text-transform: uppercase; color: #0C2340;">All Tables</span>
       </div>
-
-      <p style="margin-top: 34px; max-width: 760px; font-family: 'Barlow Semi Condensed', sans-serif; font-weight: 500; font-size: 32px; line-height: 1.35; color: #b9c6da; text-wrap: pretty;">Rack &#39;em up &#8212; every table's on us all Monday night. Grab a cue, grab a drink, and settle the score.</p>
-
-      <div style="margin-top: 36px; display: flex; align-items: center; gap: 22px;">
-        <div style="display: flex; align-items: baseline; gap: 10px; padding: 12px 28px; border-radius: 999px; background: rgba(255,209,102,0.12); border: 2px solid rgba(255,209,102,0.6);">
-          <span style="font-family: 'Anton', sans-serif; font-size: 44px; color: #ffd166;">$10</span>
-          <span style="font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 24px; letter-spacing: 1px; text-transform: uppercase; color: #ffe9b8;">Burgers All Monday</span>
-        </div>
-      </div>
-      <div style="margin-top: 30px; display: flex; gap: 14px;">
-        <span style="width: 26px; height: 26px; border-radius: 50%; background: #5ef2ff; box-shadow: 0 0 12px rgba(94,242,255,0.7);"></span>
-        <span style="width: 26px; height: 26px; border-radius: 50%; background: #ff3c96; box-shadow: 0 0 12px rgba(255,60,150,0.7);"></span>
-        <span style="width: 26px; height: 26px; border-radius: 50%; background: #ffd166; box-shadow: 0 0 12px rgba(255,209,102,0.7);"></span>
+      <div style="padding: 16px 34px; border-radius: 14px; border: 4px solid #F2AF32; background: rgba(12,35,64,0.6);">
+        <span style="font-family: 'Anton', sans-serif; font-size: 58px; letter-spacing: 3px; text-transform: uppercase; color: #ffffff;">All Day</span>
       </div>
     </div>
-
-    <img src="uploads/St.peteLogo.webp" alt="Localz Sports Bar &amp; Grill" style="flex-shrink: 0; height: 260px; width: auto; object-fit: contain; filter: drop-shadow(0 4px 14px rgba(0,0,0,0.55)); align-self: flex-start; margin-top: 40px;">
-
-    <div style="flex-shrink: 0; width: 700px; height: 700px; display: flex; align-items: center; justify-content: center; margin-top: 60px;">
-      <img src="uploads/IMG_4203.webp" alt="Pool tables at Localz" style="width: 100%; height: 100%; object-fit: cover; border-radius: 28px; box-shadow: 0 0 0 4px rgba(94,242,255,0.85), 0 0 60px rgba(94,242,255,0.35), 0 20px 60px rgba(0,0,0,0.6);">
+    <div style="margin-top: 40px; display: inline-flex; align-items: center; gap: 22px; padding: 18px 34px 18px 22px; border-radius: 999px; background: rgba(255,255,255,0.06); border: 2px solid rgba(159,195,238,0.35);">
+      <span style="display: inline-flex; align-items: center; justify-content: center; width: 104px; height: 104px; border-radius: 50%; background: #d62828; box-shadow: inset -8px -10px 0 rgba(0,0,0,0.25);">
+        <span style="font-family: 'Anton', sans-serif; font-size: 52px; color: #fff;">$10</span>
+      </span>
+      <span style="font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 46px; letter-spacing: 3px; text-transform: uppercase; color: #ffffff;">Burgers All Monday</span>
     </div>
   </div>
 
-  <div style="position: absolute; left: 0; right: 0; bottom: 0; z-index: 2; height: 84px; display: flex; align-items: center; justify-content: center; background: linear-gradient(90deg, #b8860b, #ffd166, #b8860b); border-top: 2px solid rgba(255,209,102,0.7);">
-    <span style="font-family: 'Barlow Condensed', sans-serif; font-weight: 600; font-size: 30px; letter-spacing: 5px; text-transform: uppercase; color: #1c1400;">WWW.LOCALZSPORTSBAR.COM</span>
+  <!-- right: pool table graphic -->
+  <div style="position: absolute; top: 210px; left: 965px; transform: rotate(-9deg); filter: drop-shadow(0 40px 50px rgba(0,0,0,0.6));">
+<svg viewBox="0 0 900 500" width="900" height="500" style="overflow: visible;">
+  <defs>
+    <radialGradient id="felt" cx="50%" cy="50%" r="65%"><stop offset="0%" stop-color="#2f7fe0"/><stop offset="70%" stop-color="#1a5bb8"/><stop offset="100%" stop-color="#0f3f86"/></radialGradient>
+    <linearGradient id="wood" x1="0" y1="0" x2="1" y2="1"><stop offset="0%" stop-color="#6b3a1c"/><stop offset="50%" stop-color="#8a4d26"/><stop offset="100%" stop-color="#4e2812"/></linearGradient>
+    <linearGradient id="cue" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#1b1b1b"/><stop offset="35%" stop-color="#5a2e14"/><stop offset="70%" stop-color="#e8c98a"/><stop offset="96%" stop-color="#f4e6c4"/><stop offset="100%" stop-color="#2a6fd6"/></linearGradient>
+    <filter id="sh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="0" dy="3" stdDeviation="2.5" flood-opacity=".45"/></filter>
+  </defs>
+  <rect x="0" y="0" width="900" height="500" rx="38" fill="url(#wood)"/>
+  <rect x="10" y="10" width="880" height="480" rx="30" fill="none" stroke="#c9a15a" stroke-width="3" opacity=".55"/>
+  <rect x="52" y="52" width="796" height="396" rx="10" fill="url(#felt)"/>
+  <rect x="52" y="52" width="796" height="396" rx="10" fill="none" stroke="#0b3170" stroke-width="10" opacity=".55"/>
+  <g fill="#c9a15a"><circle cx="151" cy="31" r="5"/><circle cx="151" cy="469" r="5"/><circle cx="250" cy="31" r="5"/><circle cx="250" cy="469" r="5"/><circle cx="349" cy="31" r="5"/><circle cx="349" cy="469" r="5"/><circle cx="551" cy="31" r="5"/><circle cx="551" cy="469" r="5"/><circle cx="650" cy="31" r="5"/><circle cx="650" cy="469" r="5"/><circle cx="749" cy="31" r="5"/><circle cx="749" cy="469" r="5"/><circle cx="31" cy="151" r="5"/><circle cx="31" cy="250" r="5"/><circle cx="31" cy="349" r="5"/><circle cx="869" cy="151" r="5"/><circle cx="869" cy="250" r="5"/><circle cx="869" cy="349" r="5"/></g>
+  <g fill="#050505">
+    <circle cx="58" cy="58" r="27"/><circle cx="842" cy="58" r="27"/><circle cx="58" cy="442" r="27"/><circle cx="842" cy="442" r="27"/>
+    <circle cx="450" cy="50" r="24"/><circle cx="450" cy="450" r="24"/>
+  </g>
+  <line x1="250" y1="58" x2="250" y2="442" stroke="#ffffff" stroke-opacity=".18" stroke-width="2"/>
+  <circle cx="250" cy="250" r="3.5" fill="#fff" opacity=".5"/>
+  <circle cx="560" cy="250" r="3.5" fill="#fff" opacity=".5"/>
+  <g filter="url(#sh)">
+<g><circle cx="560.0" cy="250.0" r="19" fill="#f5c518"/><circle cx="560.0" cy="250.0" r="8.5" fill="#fff"/><text x="560.0" y="253.6" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="11" fill="#111">1</text><circle cx="554.0" cy="243.0" r="5" fill="#fff" opacity=".35"/></g>
+<g><circle cx="593.8" cy="230.5" r="19" fill="#f7f3e8"/><rect x="574.8" y="221.0" width="38" height="19" fill="#f5c518" clip-path="url(#ballclip9)"/><clipPath id="ballclip9"><circle cx="593.8" cy="230.5" r="19"/></clipPath><circle cx="593.8" cy="230.5" r="8.5" fill="#fff"/><text x="593.8" y="234.1" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="11" fill="#111">9</text><circle cx="587.8" cy="223.5" r="5" fill="#fff" opacity=".35"/></g>
+<g><circle cx="593.8" cy="269.5" r="19" fill="#1f4fd1"/><circle cx="593.8" cy="269.5" r="8.5" fill="#fff"/><text x="593.8" y="273.1" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="11" fill="#111">2</text><circle cx="587.8" cy="262.5" r="5" fill="#fff" opacity=".35"/></g>
+<g><circle cx="627.5" cy="211.0" r="19" fill="#f7f3e8"/><rect x="608.5" y="201.5" width="38" height="19" fill="#1f4fd1" clip-path="url(#ballclip10)"/><clipPath id="ballclip10"><circle cx="627.5" cy="211.0" r="19"/></clipPath><circle cx="627.5" cy="211.0" r="8.5" fill="#fff"/><text x="627.5" y="214.6" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="11" fill="#111">10</text><circle cx="621.5" cy="204.0" r="5" fill="#fff" opacity=".35"/></g>
+<g><circle cx="627.5" cy="250.0" r="19" fill="#111111"/><circle cx="627.5" cy="250.0" r="8.5" fill="#fff"/><text x="627.5" y="253.6" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="11" fill="#111">8</text><circle cx="621.5" cy="243.0" r="5" fill="#fff" opacity=".35"/></g>
+<g><circle cx="627.5" cy="289.0" r="19" fill="#d62828"/><circle cx="627.5" cy="289.0" r="8.5" fill="#fff"/><text x="627.5" y="292.6" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="11" fill="#111">3</text><circle cx="621.5" cy="282.0" r="5" fill="#fff" opacity=".35"/></g>
+<g><circle cx="661.3" cy="191.5" r="19" fill="#f7f3e8"/><rect x="642.3" y="182.0" width="38" height="19" fill="#d62828" clip-path="url(#ballclip11)"/><clipPath id="ballclip11"><circle cx="661.3" cy="191.5" r="19"/></clipPath><circle cx="661.3" cy="191.5" r="8.5" fill="#fff"/><text x="661.3" y="195.1" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="11" fill="#111">11</text><circle cx="655.3" cy="184.5" r="5" fill="#fff" opacity=".35"/></g>
+<g><circle cx="661.3" cy="230.5" r="19" fill="#7a1f1f"/><circle cx="661.3" cy="230.5" r="8.5" fill="#fff"/><text x="661.3" y="234.1" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="11" fill="#111">7</text><circle cx="655.3" cy="223.5" r="5" fill="#fff" opacity=".35"/></g>
+<g><circle cx="661.3" cy="269.5" r="19" fill="#f7f3e8"/><rect x="642.3" y="260.0" width="38" height="19" fill="#1e8a4c" clip-path="url(#ballclip14)"/><clipPath id="ballclip14"><circle cx="661.3" cy="269.5" r="19"/></clipPath><circle cx="661.3" cy="269.5" r="8.5" fill="#fff"/><text x="661.3" y="273.1" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="11" fill="#111">14</text><circle cx="655.3" cy="262.5" r="5" fill="#fff" opacity=".35"/></g>
+<g><circle cx="661.3" cy="308.5" r="19" fill="#6a2c91"/><circle cx="661.3" cy="308.5" r="8.5" fill="#fff"/><text x="661.3" y="312.1" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="11" fill="#111">4</text><circle cx="655.3" cy="301.5" r="5" fill="#fff" opacity=".35"/></g>
+<g><circle cx="695.1" cy="172.0" r="19" fill="#f07a1a"/><circle cx="695.1" cy="172.0" r="8.5" fill="#fff"/><text x="695.1" y="175.6" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="11" fill="#111">5</text><circle cx="689.1" cy="165.0" r="5" fill="#fff" opacity=".35"/></g>
+<g><circle cx="695.1" cy="211.0" r="19" fill="#f7f3e8"/><rect x="676.1" y="201.5" width="38" height="19" fill="#f07a1a" clip-path="url(#ballclip13)"/><clipPath id="ballclip13"><circle cx="695.1" cy="211.0" r="19"/></clipPath><circle cx="695.1" cy="211.0" r="8.5" fill="#fff"/><text x="695.1" y="214.6" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="11" fill="#111">13</text><circle cx="689.1" cy="204.0" r="5" fill="#fff" opacity=".35"/></g>
+<g><circle cx="695.1" cy="250.0" r="19" fill="#f7f3e8"/><rect x="676.1" y="240.5" width="38" height="19" fill="#7a1f1f" clip-path="url(#ballclip15)"/><clipPath id="ballclip15"><circle cx="695.1" cy="250.0" r="19"/></clipPath><circle cx="695.1" cy="250.0" r="8.5" fill="#fff"/><text x="695.1" y="253.6" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="11" fill="#111">15</text><circle cx="689.1" cy="243.0" r="5" fill="#fff" opacity=".35"/></g>
+<g><circle cx="695.1" cy="289.0" r="19" fill="#1e8a4c"/><circle cx="695.1" cy="289.0" r="8.5" fill="#fff"/><text x="695.1" y="292.6" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="11" fill="#111">6</text><circle cx="689.1" cy="282.0" r="5" fill="#fff" opacity=".35"/></g>
+<g><circle cx="695.1" cy="328.0" r="19" fill="#f7f3e8"/><rect x="676.1" y="318.5" width="38" height="19" fill="#6a2c91" clip-path="url(#ballclip12)"/><clipPath id="ballclip12"><circle cx="695.1" cy="328.0" r="19"/></clipPath><circle cx="695.1" cy="328.0" r="8.5" fill="#fff"/><text x="695.1" y="331.6" text-anchor="middle" font-family="Barlow Condensed, sans-serif" font-weight="700" font-size="11" fill="#111">12</text><circle cx="689.1" cy="321.0" r="5" fill="#fff" opacity=".35"/></g>
+  </g>
+  <g class="fp-cueball"><circle cx="250" cy="250" r="19" fill="#fbfaf5" filter="url(#sh)"/><circle cx="244" cy="243" r="6" fill="#fff"/></g>
+  <g class="fp-stick"><rect x="-150" y="244" width="370" height="12" rx="6" fill="url(#cue)" filter="url(#sh)"/></g>
+</svg>
+  </div>
+
+  <!-- footer -->
+  <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 110px; display: flex; align-items: center; gap: 30px; padding: 0 70px; background: #0C2340; border-top: 4px solid #F2AF32;">
+    <img src="uploads/St.peteLogo.webp" alt="Localz Sports Bar &amp; Grill" style="height: 92px; width: auto; object-fit: contain;">
+    <span style="font-family: 'Anton', sans-serif; font-size: 40px; letter-spacing: 4px; text-transform: uppercase; color: #F2AF32;">Rack &#39;em Up on Us</span>
+    <span style="margin-left: auto; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 30px; letter-spacing: 5px; text-transform: uppercase; color: #9fb6d6;">WWW.LOCALZSPORTSBAR.COM</span>
   </div>
 </div>
 
