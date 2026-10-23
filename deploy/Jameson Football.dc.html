@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Jameson Football Specials</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { background: #0a2416; width: 100%; height: 100%; overflow: hidden; }
+  #stage { position: absolute; left: 50%; top: 50%; width: 1920px; height: 1080px; margin: -540px 0 0 -960px; overflow: hidden;
+    background: radial-gradient(70% 90% at 70% 40%, #1f6b3c 0%, #124a2a 45%, #08200f 100%); transform-origin: center center; font-family: 'Barlow Condensed', sans-serif; }
+  .lines { position: absolute; inset: 0; background-image: repeating-linear-gradient(90deg, transparent 0 158px, rgba(255,255,255,0.05) 158px 162px); }
+  .poster { position: absolute; right: 0; top: 0; width: 930px; height: 1080px; object-fit: cover; object-position: center top;
+    -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 22%); mask-image: linear-gradient(90deg, transparent 0, #000 22%); }
+  .gold-bar { position: absolute; top: 0; left: 0; right: 0; height: 10px; background: #F2AF32; }
+  .copy { position: absolute; left: 96px; top: 56px; width: 880px; }
+  .logo { width: 270px; display: block; filter: drop-shadow(0 10px 20px rgba(0,0,0,0.5)); }
+  .kicker { margin-top: 14px; display: flex; align-items: center; gap: 18px; font-weight: 700; font-size: 36px; letter-spacing: 10px; text-transform: uppercase; color: #b9e3c6; }
+  .kicker span { width: 70px; height: 4px; background: #F2AF32; }
+  .title { margin-top: 6px; font-family: 'Anton', sans-serif; font-size: 146px; line-height: 0.95; text-transform: uppercase; color: #fff; text-shadow: 0 8px 0 #06170c; }
+  .price-row { margin-top: 18px; display: flex; align-items: center; gap: 30px; }
+  .price { font-family: 'Anton', sans-serif; font-size: 150px; line-height: 1; color: #F2AF32; text-shadow: 0 0 34px rgba(242,175,50,0.5), 0 8px 0 #06170c; }
+  .price-label { font-family: 'Anton', sans-serif; font-size: 62px; line-height: 1.02; text-transform: uppercase; color: #fff; }
+  .menu { margin-top: 24px; width: 860px; padding: 24px 40px; border-radius: 18px; background: rgba(6,24,14,0.62); border: 2px solid rgba(242,175,50,0.55); display: flex; gap: 40px; }
+  .col { flex: 1; }
+  .col h3 { font-weight: 700; font-size: 30px; letter-spacing: 6px; text-transform: uppercase; color: #F2AF32; }
+  .col p { margin-top: 8px; font-family: 'Anton', sans-serif; font-size: 46px; line-height: 1.1; text-transform: uppercase; color: #fff; }
+  .divider { width: 2px; background: rgba(242,175,50,0.4); }
+  .legal { position: absolute; left: 96px; bottom: 26px; font-weight: 600; font-size: 22px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.55); }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="lines"></div>
+  <img class="poster" src="uploads/jameson-gameday.webp" alt="Kick Off Gameday with Jameson">
+  <div class="gold-bar"></div>
+
+  <div class="copy">
+    <img class="logo" src="uploads/St.peteLogo.webp" alt="Localz Sports Bar &amp; Grill">
+    <div class="kicker"><span></span>Game Day</div>
+    <div class="title">Football Specials</div>
+    <div class="price-row">
+      <div class="price">$8</div>
+      <div class="price-label">All Jameson<br>Drinks</div>
+    </div>
+    <div class="menu">
+      <div class="col">
+        <h3>Drinks</h3>
+        <p>Irish Whiskey<br>&amp; Orange</p>
+      </div>
+      <div class="divider"></div>
+      <div class="col">
+        <h3>Jameson Shots</h3>
+        <p>Green Tea<br>Florida Tea</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="legal">Taste responsibly. Must be 21+.</div>
+</div>
+<script>
+  function fit(){ var s=Math.min(innerWidth/1920, innerHeight/1080); document.getElementById('stage').style.transform='scale('+s+')'; }
+  fit(); addEventListener('resize', fit);
+</script>
+</body>
+</html>
