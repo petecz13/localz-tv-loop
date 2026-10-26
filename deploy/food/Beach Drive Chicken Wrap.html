@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Beach Drive Chicken Wrap</title>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@600;700;800&family=Barlow+Semi+Condensed:wght@500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:100%;height:100%;background:#000;overflow:hidden}
+#stage{position:absolute;left:50%;top:50%;width:1920px;height:1080px;overflow:hidden;transform-origin:center;
+  transform:translate(-50%,-50%);font-family:'Barlow Semi Condensed',sans-serif;color:#fff}
+.fit{white-space:nowrap;display:inline-block}
+.ey{display:flex;align-items:center;gap:22px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:36px;letter-spacing:9px;text-transform:uppercase;color:#9fb6d6}
+.ey i{width:70px;height:4px;background:#F2AF32}
+.t1{font-family:'Anton',sans-serif;text-transform:uppercase;color:#fff;line-height:.98}
+.t2{font-family:'Anton',sans-serif;text-transform:uppercase;color:#F2AF32;line-height:.98;text-shadow:0 0 34px rgba(242,175,50,.35)}
+.desc{font-weight:500;font-size:38px;line-height:1.34;color:#d7e2f0;text-wrap:pretty}
+.chips{display:flex;flex-wrap:wrap;gap:18px}
+.chip{border:3px solid #F2AF32;border-radius:12px;padding:12px 26px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:32px;letter-spacing:2px;text-transform:uppercase;color:#fff}
+.spicy{display:inline-flex;align-items:center;gap:10px;background:#C8102E;border-radius:10px;padding:8px 20px;font-family:'Barlow Condensed',sans-serif;font-weight:800;font-size:28px;letter-spacing:4px;text-transform:uppercase;color:#fff}
+.foot{position:absolute;bottom:0;left:0;right:0;height:110px;display:flex;align-items:center;gap:30px;padding:0 70px;background:#0C2340;border-top:4px solid #F2AF32;z-index:5}
+.foot img{height:92px}
+.foot .tag{font-family:'Anton',sans-serif;font-size:40px;letter-spacing:4px;text-transform:uppercase;color:#F2AF32}
+.foot .url{margin-left:auto;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:30px;letter-spacing:5px;color:#9fb6d6}
+.badge{position:absolute;z-index:4;background:linear-gradient(160deg,#d81f2f,#a50e1c);border:4px solid #F2AF32;border-radius:16px;padding:16px 34px;text-align:center;transform:rotate(-4deg);box-shadow:0 18px 40px rgba(0,0,0,.45)}
+.badge b{display:block;font-family:'Anton',sans-serif;font-weight:400;font-size:84px;line-height:1;color:#F2AF32}
+.badge span{display:block;font-family:'Anton',sans-serif;font-size:40px;letter-spacing:3px;text-transform:uppercase;color:#fff}
+.badge em{display:block;font-style:normal;margin-top:4px;font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:26px;letter-spacing:3px;text-transform:uppercase;color:#ffe2a6}
+#stage{background:radial-gradient(90% 100% at 75% 45%,#1b3d6e 0%,#0C2340 55%,#071528 100%)}
+</style></head><body>
+<div id="stage">
+<div style="position:absolute;top:0;left:0;right:0;height:6px;background:#F2AF32"></div><div style="position:absolute;left:90px;top:6px;bottom:116px;width:900px;display:flex;flex-direction:column;justify-content:center"><div>
+  <div class="ey"><i></i>Signature Wrapz</div>
+  <div style="margin-top:26px">
+    <span class="t1 fit" data-fs="120" data-max="880">Beach Drive</span><br>
+    <span class="t2 fit" data-fs="176" data-max="880">Chicken Wrap</span>
+  </div>
+  <p class="desc" style="margin-top:28px;max-width:880px">Grilled or fried chicken breast, Swiss, lettuce, tomato, saut&eacute;ed mushrooms &amp; onions with horseradish aioli, pressed in a flour tortilla.</p>
+  <div style="margin-top:36px"><div class="chips"><div class="chip">Served with your choice of side</div></div></div></div></div><div style="position:absolute;left:1010px;top:70px;width:850px;height:830px;display:flex;align-items:center;justify-content:center"><div style="position:absolute;inset:6%;border-radius:50%;background:radial-gradient(circle,rgba(242,175,50,.38),rgba(242,175,50,0) 68%)"></div><img src="../uploads/beach-drive-wrap-trim.webp" style="position:relative;max-width:100%;max-height:100%;object-fit:contain;filter:drop-shadow(0 30px 40px rgba(0,0,0,.6))"></div>
+<div class="foot"><img src="../uploads/St.peteLogo.webp" alt="Localz"><span class="tag">Wrapz &bull; Saladz &bull; Fresh Daily</span><span class="url">WWW.LOCALZSPORTSBAR.COM</span></div>
+</div>
+<script>
+// shrink any .fit line until it fits its box, then scale the 1920x1080 stage to the screen
+function shrink(){document.querySelectorAll('.fit').forEach(function(el){
+  var max=+el.dataset.max, fs=+el.dataset.fs; el.style.fontSize=fs+'px';
+  while(el.offsetWidth>max && fs>40){fs-=4; el.style.fontSize=fs+'px';}
+});}
+shrink(); if(document.fonts){document.fonts.ready.then(shrink);document.fonts.onloadingdone=shrink;} setTimeout(shrink,1000); setTimeout(shrink,3000);
+function fit(){var s=Math.min(innerWidth/1920,innerHeight/1080);document.getElementById('stage').style.transform='translate(-50%,-50%) scale('+s+')';}
+fit(); addEventListener('resize',fit);
+</script>
+</body></html>
