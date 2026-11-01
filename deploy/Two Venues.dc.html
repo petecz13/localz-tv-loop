@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Localz + Clearwater Beach Bar</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@500;600;700&family=Barlow+Semi+Condensed:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { background: #000; width: 100%; height: 100%; overflow: hidden; }
+  #tv { position: absolute; left: 50%; top: 50%; width: 1920px; height: 1080px; margin: -540px 0 0 -960px; overflow: hidden;
+    background: #0C2340; font-family: 'Barlow Semi Condensed', sans-serif; color: #fff; transform-origin: center center; }
+  .anton { font-family: 'Anton', sans-serif; text-transform: uppercase; font-weight: 400; }
+  .bc { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; text-transform: uppercase; }
+  .half { position: absolute; top: 0; bottom: 0; width: 1040px; }
+  .side { position: absolute; top: 150px; width: 820px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .chips { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 26px; }
+  .chip { padding: 10px 24px; border-radius: 999px; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 30px; letter-spacing: 2px; text-transform: uppercase; white-space: nowrap; }
+  @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+  @keyframes wave { 0% { background-position-x: 0; } 100% { background-position-x: 400px; } }
+</style>
+</head>
+<body>
+<div id="tv">
+  <!-- LEFT: Localz (bar photo, navy + gold) -->
+  <div class="half" style="left: 0; clip-path: polygon(0 0, 100% 0, 88% 100%, 0 100%);">
+    <img src="uploads/IMG_4203.webp" alt="" style="position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center 40%;">
+    <div style="position: absolute; inset: 0; background: linear-gradient(180deg, rgba(12,35,64,0.82) 0%, rgba(12,35,64,0.9) 55%, rgba(6,16,31,0.97) 100%);"></div>
+  </div>
+
+  <!-- RIGHT: Beach Bar (ocean, navy + red) -->
+  <div class="half" style="right: 0; clip-path: polygon(12% 0, 100% 0, 100% 100%, 0 100%); background: radial-gradient(90% 80% at 60% 30%, #2a5a8f 0%, #1A3357 55%, #0e1d33 100%);">
+    <div style="position: absolute; left: 0; right: 0; bottom: 0; height: 260px; opacity: 0.22;
+      background: repeating-radial-gradient(circle at 50% 120%, transparent 0 34px, #8fd3f4 34px 40px); background-size: 400px 260px; animation: wave 14s linear infinite;"></div>
+  </div>
+
+  <!-- seam: gold/red stripe -->
+  <div style="position: absolute; top: -20px; bottom: -20px; left: 950px; width: 18px; background: linear-gradient(180deg, #F2AF32, #C12231); transform: skewX(-6.8deg); box-shadow: 0 0 30px rgba(0,0,0,0.6);"></div>
+
+  <!-- header -->
+  <div style="position: absolute; top: 46px; left: 0; right: 0; display: flex; justify-content: center; align-items: center; gap: 26px; z-index: 3;"><div style="display: flex; align-items: center; gap: 26px; padding: 14px 40px; border-radius: 999px; background: rgba(6,16,31,0.92); box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+    <span style="width: 110px; height: 4px; background: #F2AF32;"></span>
+    <span class="bc" style="font-size: 40px; letter-spacing: 12px; color: #fff;">Two Spots &#8226; One Crew</span>
+    <span style="width: 110px; height: 4px; background: #C12231;"></span></div>
+  </div>
+
+  <!-- Localz -->
+  <div class="side" style="left: 70px;">
+    <img src="uploads/St.peteLogo.webp" alt="Localz Sports Bar &amp; Grill" style="height: 300px; width: auto; filter: drop-shadow(0 18px 30px rgba(0,0,0,0.6)); animation: bob 6s ease-in-out infinite;">
+    <div class="anton" style="margin-top: 22px; font-size: 104px; line-height: 0.95; color: #F2AF32; text-shadow: 0 6px 0 #050d1c;">Localz</div>
+    <div class="anton" style="font-size: 46px; letter-spacing: 3px; color: #fff;">Sports Bar &amp; Grill</div>
+    <div class="bc" style="margin-top: 14px; font-size: 32px; letter-spacing: 5px; color: #9fc3ee;">Downtown St. Pete &#8226; 1 Beach Dr SE</div>
+    <div class="chips">
+      <span class="chip" style="background: #F2AF32; color: #0C2340;">60+ TVs</span>
+      <span class="chip" style="border: 3px solid #F2AF32;">Full Kitchen</span>
+      <span class="chip" style="border: 3px solid #F2AF32;">Pool Tables</span>
+          </div>
+  </div>
+
+  <!-- Beach Bar -->
+  <div class="side" style="right: 50px;">
+    <img src="uploads/cbb-logo-cut.webp" alt="Clearwater Beach Bar" style="height: 300px; width: auto; filter: drop-shadow(0 18px 30px rgba(0,0,0,0.6)); animation: bob 6s ease-in-out infinite; animation-delay: -3s;">
+    <div class="anton" style="margin-top: 22px; font-size: 104px; line-height: 0.95; color: #fff; text-shadow: 0 6px 0 #C12231;">Beach Bar</div>
+    <div class="anton" style="font-size: 46px; letter-spacing: 3px; color: #ffd0d4;">Clearwater Beach</div>
+    <div class="bc" style="margin-top: 14px; font-size: 32px; letter-spacing: 5px; color: #9fd3f4;">411 Mandalay Ave &#8226; Now Open</div>
+    <div class="chips">
+      <span class="chip" style="background: #C12231; color: #fff;">Open Til 3AM</span>
+      <span class="chip" style="border: 3px solid #C12231;">DJ Fri &amp; Sat</span>
+      <span class="chip" style="border: 3px solid #C12231;">NFL Sunday Ticket</span>
+    </div>
+  </div>
+
+  <!-- footer -->
+  <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 110px; display: flex; align-items: center; justify-content: space-between; padding: 0 70px; background: #06101f; border-top: 4px solid #F2AF32; z-index: 4;">
+    <span class="bc" style="font-size: 32px; letter-spacing: 5px; color: #F2AF32;">WWW.LOCALZSPORTSBAR.COM</span>
+    <span class="anton" style="font-size: 40px; letter-spacing: 4px; color: #fff;">From DTSP to the Sand</span>
+    <span class="bc" style="font-size: 32px; letter-spacing: 3px; color: #ff8a94;">@CLEARWATERBEACHBARUSA</span>
+  </div>
+</div>
+<script>
+  function fit(){ var s=Math.min(innerWidth/1920, innerHeight/1080); document.getElementById('tv').style.transform='scale('+s+')'; }
+  fit(); addEventListener('resize', fit);
+</script>
+</body>
+</html>
