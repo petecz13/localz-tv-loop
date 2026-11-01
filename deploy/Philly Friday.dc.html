@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Philly Friday</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@500;600;700&family=Barlow+Semi+Condensed:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { background: #06101f; width: 100%; height: 100%; overflow: hidden; }
+  @keyframes pf-bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-14px); } }
+  #pf-stage { position: absolute; left: 50%; top: 50%; width: 1920px; height: 1080px; margin: -540px 0 0 -960px; overflow: hidden;
+    background: radial-gradient(80% 85% at 74% 45%, #173a6e 0%, #0b1f40 55%, #050d1c 100%);
+    font-family: 'Barlow Semi Condensed', sans-serif; color: #fff; transform-origin: center center; }
+  .row { display: flex; align-items: center; justify-content: space-between; gap: 24px; padding: 18px 30px;
+    border-radius: 16px; background: rgba(12,35,64,0.88); border: 2px solid rgba(242,175,50,0.55); }
+  .row .name { font-family: 'Anton', sans-serif; font-size: 54px; line-height: 1; letter-spacing: 1px; text-transform: uppercase; white-space: nowrap; }
+  .row .price { font-family: 'Anton', sans-serif; font-size: 72px; line-height: 1; color: #F2AF32; text-shadow: 0 0 22px rgba(242,175,50,0.45); }
+  .row .price sup { font-size: 40px; vertical-align: 26px; margin-right: 2px; }
+</style>
+</head>
+<body>
+<div id="pf-stage">
+  <div style="position: absolute; inset: 0; background-image: repeating-linear-gradient(120deg, transparent 0 22px, rgba(255,255,255,0.025) 22px 24px);"></div>
+  <div style="position: absolute; top: 0; left: 0; right: 0; height: 10px; background: #F2AF32;"></div>
+  <div style="position: absolute; top: 120px; left: 1080px; width: 760px; height: 760px; border-radius: 50%; background: radial-gradient(closest-side, rgba(242,175,50,0.30), transparent);"></div>
+
+  <!-- left: copy -->
+  <div style="position: absolute; top: 80px; left: 96px; width: 900px;">
+    <div style="display: flex; align-items: center; gap: 18px;">
+      <span style="width: 70px; height: 4px; background: #F2AF32;"></span>
+      <span style="font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 34px; letter-spacing: 10px; text-transform: uppercase; color: #9fc3ee;">Every Friday &#8226; All Day</span>
+    </div>
+    <div style="margin-top: 10px; font-family: 'Anton', sans-serif; text-transform: uppercase; line-height: 0.9;">
+      <div style="font-size: 190px; color: #ffffff; letter-spacing: 2px;">PHILLY</div>
+      <div style="font-size: 200px; color: #F2AF32; letter-spacing: 2px; text-shadow: 0 0 30px rgba(242,175,50,0.6), 0 8px 0 #071528;">FRIDAY</div>
+    </div>
+
+    <div style="margin-top: 36px; display: flex; flex-direction: column; gap: 16px; width: 880px;">
+      <div class="row"><span class="name">Philly Cheesesteak</span><span class="price"><sup>$</sup>10</span></div>
+      <div class="row"><span class="name">Beach Drive French Dip</span><span class="price"><sup>$</sup>12</span></div>
+      <div class="row"><span class="name" style="color:#F2AF32">Double Bacon Philly</span><span class="price"><sup>$</sup>13</span></div>
+    </div>
+  </div>
+
+  <!-- right: hero -->
+  <img src="uploads/double-bacon-philly.webp" alt="Double Bacon Philly" style="position: absolute; left: 1060px; top: 70px; height: 880px; width: auto; filter: drop-shadow(0 36px 40px rgba(0,0,0,0.6)); animation: pf-bob 6s ease-in-out infinite;">
+
+  <!-- footer -->
+  <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 110px; display: flex; align-items: center; gap: 30px; padding: 0 70px; background: #0C2340; border-top: 4px solid #F2AF32;">
+    <img src="uploads/St.peteLogo.webp" alt="Localz Sports Bar &amp; Grill" style="height: 92px; width: auto; object-fit: contain;">
+    <span style="font-family: 'Anton', sans-serif; font-size: 40px; letter-spacing: 4px; text-transform: uppercase; color: #F2AF32;">Your Cheesesteak Spot in DTSP</span>
+    <span style="margin-left: auto; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 30px; letter-spacing: 5px; text-transform: uppercase; color: #9fb6d6;">WWW.LOCALZSPORTSBAR.COM</span>
+  </div>
+</div>
+<script>
+  function fit(){ var s=Math.min(innerWidth/1920, innerHeight/1080); document.getElementById('pf-stage').style.transform='scale('+s+')'; }
+  fit(); addEventListener('resize', fit);
+</script>
+</body>
+</html>
