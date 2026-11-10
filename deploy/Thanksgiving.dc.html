@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Barlow+Condensed:wght@500;600;700&family=Barlow+Semi+Condensed:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { background: #0C2340; width: 100%; height: 100%; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  a { color: #f5a623; }
+  a:hover { color: #ffd166; }
+  @keyframes bv-pulse { 0%,100% { text-shadow: 0 6px 0 #0b1530, 0 14px 26px rgba(0,0,0,0.35); } 50% { text-shadow: 0 6px 0 #0b1530, 0 14px 40px rgba(213,10,10,0.6); } }
+  @keyframes bv-drift { 0%,100% { transform: translate(0,0); } 50% { transform: translate(24px,-18px); } }
+</style>
+</helmet>
+
+<div id="bv-stage" style="position: relative; width: 1920px; height: 1080px; overflow: hidden; background: radial-gradient(120% 100% at 50% 0%, #17396a 0%, #0C2340 60%, #081a30 100%); font-family: 'Barlow Semi Condensed', sans-serif; transform-origin: center center;">
+  <div style="position: absolute; top: 0; left: 0; right: 0; height: 10px; background: #F2AF32;"></div>
+
+  <div style="position: absolute; top: 40px; left: 0; right: 0; display: flex; align-items: center; justify-content: center; gap: 50px;">
+    <svg viewBox="-50 0 500 420" width="520" height="437" aria-hidden="true" style="flex: 0 0 auto; filter: drop-shadow(0 18px 30px rgba(0,0,0,0.45));">
+      <ellipse cx="200" cy="120" rx="46" ry="125" fill="#C8102E" stroke="#081a30" stroke-width="5" transform="rotate(-80.0 200 245)"/><ellipse cx="200" cy="120" rx="46" ry="125" fill="#E8731A" stroke="#081a30" stroke-width="5" transform="rotate(-60.0 200 245)"/><ellipse cx="200" cy="120" rx="46" ry="125" fill="#F2AF32" stroke="#081a30" stroke-width="5" transform="rotate(-40.0 200 245)"/><ellipse cx="200" cy="120" rx="46" ry="125" fill="#8B4513" stroke="#081a30" stroke-width="5" transform="rotate(-20.0 200 245)"/><ellipse cx="200" cy="120" rx="46" ry="125" fill="#E8731A" stroke="#081a30" stroke-width="5" transform="rotate(0.0 200 245)"/><ellipse cx="200" cy="120" rx="46" ry="125" fill="#C8102E" stroke="#081a30" stroke-width="5" transform="rotate(20.0 200 245)"/><ellipse cx="200" cy="120" rx="46" ry="125" fill="#F2AF32" stroke="#081a30" stroke-width="5" transform="rotate(40.0 200 245)"/><ellipse cx="200" cy="120" rx="46" ry="125" fill="#8B4513" stroke="#081a30" stroke-width="5" transform="rotate(60.0 200 245)"/><ellipse cx="200" cy="120" rx="46" ry="125" fill="#E8731A" stroke="#081a30" stroke-width="5" transform="rotate(80.0 200 245)"/>
+      <ellipse cx="200" cy="275" rx="112" ry="105" fill="#6B3E1E" stroke="#081a30" stroke-width="6"/>
+      <ellipse cx="200" cy="300" rx="62" ry="58" fill="#8B5A2B"/>
+      <path d="M155 375 L150 405 M150 405 L132 412 M150 405 L152 415 M150 405 L166 412" stroke="#E8731A" stroke-width="8" stroke-linecap="round" fill="none"/>
+      <path d="M245 375 L250 405 M250 405 L234 412 M250 405 L248 415 M250 405 L268 412" stroke="#E8731A" stroke-width="8" stroke-linecap="round" fill="none"/>
+      <circle cx="200" cy="170" r="58" fill="#8B5A2B" stroke="#081a30" stroke-width="6"/>
+      <circle cx="178" cy="158" r="14" fill="#ffffff"/><circle cx="222" cy="158" r="14" fill="#ffffff"/>
+      <circle cx="181" cy="161" r="7" fill="#081a30"/><circle cx="219" cy="161" r="7" fill="#081a30"/>
+      <path d="M186 180 L214 180 L200 204 Z" fill="#F2AF32" stroke="#081a30" stroke-width="4" stroke-linejoin="round"/>
+      <path d="M208 196 C 226 206, 226 236, 212 240 C 200 236, 200 214, 208 196 Z" fill="#C8102E" stroke="#081a30" stroke-width="4"/>
+    </svg>
+    <div style="display: flex; flex-direction: column; align-items: flex-start;">
+      <div style="display: flex; align-items: center; gap: 22px;">
+        <span style="width: 80px; height: 3px; background: #F2AF32;"></span>
+        <span style="font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 42px; letter-spacing: 10px; text-transform: uppercase; color: #F2AF32;">Thursday &#8226; Nov 26</span>
+      </div>
+      <span style="margin-top: 10px; font-family: 'Anton', sans-serif; font-size: 150px; line-height: 0.95; text-transform: uppercase; color: #ffffff;">Happy</span>
+      <span style="font-family: 'Anton', sans-serif; font-size: 150px; line-height: 0.95; text-transform: uppercase; color: #F2AF32; text-shadow: 0 6px 0 #081a30;">Thanksgiving</span>
+      <div style="margin-top: 26px; padding: 14px 48px; border-radius: 10px; background: #F2AF32; box-shadow: 0 16px 34px rgba(0,0,0,0.35);">
+        <span style="font-family: 'Anton', sans-serif; font-size: 62px; letter-spacing: 4px; text-transform: uppercase; color: #0C2340;">Open All Day</span>
+      </div>
+    </div>
+  </div>
+
+  <div style="position: absolute; top: 560px; left: 70px; right: 70px; display: flex; flex-direction: column; gap: 22px;">
+    <div style="display: flex; align-items: center; justify-content: center; gap: 26px;">
+      <span style="width: 140px; height: 3px; background: rgba(207,224,245,0.5);"></span>
+      <span style="font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 42px; letter-spacing: 10px; text-transform: uppercase; color: #cfe0f5;">Turkey Day Football Tripleheader</span>
+      <span style="width: 140px; height: 3px; background: rgba(207,224,245,0.5);"></span>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px;">
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 26px 20px 24px; border-radius: 18px; background: #13305a; border: 2px solid rgba(242,175,50,0.45); box-shadow: 0 16px 34px rgba(0,0,0,0.3);">
+      <span style="font-family: 'Anton', sans-serif; font-size: 70px; line-height: 1; color: #F2AF32;">1:00 PM</span>
+      <span style="margin-top: 6px; font-family: 'Anton', sans-serif; font-size: 60px; line-height: 1.05; text-transform: uppercase; color: #ffffff; white-space: nowrap;">Bears <span style="font-size: 38px; color: #9fb6d6;">AT</span> Lions</span>
+      <span style="margin-top: 4px; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 40px; letter-spacing: 6px; color: #cfe0f5;">CBS</span>
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 26px 20px 24px; border-radius: 18px; background: #13305a; border: 2px solid rgba(242,175,50,0.45); box-shadow: 0 16px 34px rgba(0,0,0,0.3);">
+      <span style="font-family: 'Anton', sans-serif; font-size: 70px; line-height: 1; color: #F2AF32;">4:30 PM</span>
+      <span style="margin-top: 6px; font-family: 'Anton', sans-serif; font-size: 60px; line-height: 1.05; text-transform: uppercase; color: #ffffff; white-space: nowrap;">Eagles <span style="font-size: 38px; color: #9fb6d6;">AT</span> Cowboys</span>
+      <span style="margin-top: 4px; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 40px; letter-spacing: 6px; color: #cfe0f5;">FOX</span>
+    </div>
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 6px; padding: 26px 20px 24px; border-radius: 18px; background: #13305a; border: 2px solid rgba(242,175,50,0.45); box-shadow: 0 16px 34px rgba(0,0,0,0.3);">
+      <span style="font-family: 'Anton', sans-serif; font-size: 70px; line-height: 1; color: #F2AF32;">8:20 PM</span>
+      <span style="margin-top: 6px; font-family: 'Anton', sans-serif; font-size: 60px; line-height: 1.05; text-transform: uppercase; color: #ffffff; white-space: nowrap;">Chiefs <span style="font-size: 38px; color: #9fb6d6;">AT</span> Bills</span>
+      <span style="margin-top: 4px; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 40px; letter-spacing: 6px; color: #cfe0f5;">NBC</span>
+    </div>
+    </div>
+  </div>
+
+  <div style="position: absolute; bottom: 0; left: 0; right: 0; height: 86px; display: flex; align-items: center; gap: 28px; padding: 0 60px; background: #081a30; border-top: 3px solid #F2AF32;">
+    <img src="uploads/St.peteLogo.webp" alt="Localz Sports Bar &amp; Grill" style="height: 70px; width: auto; object-fit: contain; flex: 0 0 auto;">
+    <span style="font-family: 'Anton', sans-serif; font-size: 34px; letter-spacing: 4px; text-transform: uppercase; color: #F2AF32;">Downtown St. Pete's #1 Sports Bar</span>
+    <span style="margin-left: auto; font-family: 'Barlow Condensed', sans-serif; font-weight: 700; font-size: 30px; letter-spacing: 5px; text-transform: uppercase; color: #9fb6d6;">WWW.LOCALZSPORTSBAR.COM</span>
+  </div>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;$preview&quot;:{&quot;width&quot;:1920,&quot;height&quot;:1080}}">
+class Component extends DCLogic {
+  componentDidMount() {
+    const fit = () => {
+      const el = document.getElementById('bv-stage');
+      if (!el) { requestAnimationFrame(fit); return; }
+      const w = window.innerWidth || document.documentElement.clientWidth;
+      const h = window.innerHeight || document.documentElement.clientHeight;
+      const s = Math.min(w / 1920, h / 1080);
+      if (!s || !isFinite(s)) { requestAnimationFrame(fit); return; }
+      el.style.transform = 'scale(' + s + ')';
+    };
+    fit();
+    window.addEventListener('resize', fit);
+    if (window.ResizeObserver) new ResizeObserver(fit).observe(document.documentElement);
+  }
+  renderVals() { return {}; }
+}
+
+</script>
+</body>
+</html>
