@@ -78,64 +78,106 @@
   }
   var gY = function (x) { return swagY(x, TOP, DIP); };
 
+  // Generic swag along any span: joins = break points, edge = rest offset, dip = sag offset.
+  function sag(v, joins, edge, dip) {
+    for (var i = 0; i < joins.length - 1; i++) {
+      if (v >= joins[i] && v <= joins[i + 1]) {
+        var t = (v - joins[i]) / (joins[i + 1] - joins[i]);
+        return (1 - t) * (1 - t) * edge + 2 * t * (1 - t) * (2 * dip - edge) + t * t * edge;
+      }
+    }
+    return edge;
+  }
+  var JV = [-20, 360, 720, 1100];                 // left/right edges: three swags
+  var JB = [-30, 480, 960, 1440, 1950];           // bottom: four swags
+  // Each side as a point function over its own axis. Sides sag inward only a little
+  // so the slides stay readable; the top keeps its deeper swags.
+  var SIDES = [
+    { name: 'top',    from: -30, to: 1950, pt: function (v) { return [v, sag(v, JOINS, TOP, DIP)]; },            rot: 0 },
+    { name: 'left',   from: -20, to: 1100, pt: function (v) { return [sag(v, JV, 12, 22), v]; },                 rot: 90 },
+    { name: 'right',  from: -20, to: 1100, pt: function (v) { return [W - sag(v, JV, 12, 22), v]; },             rot: -90 },
+    { name: 'bottom', from: -30, to: 1950, pt: function (v) { return [v, H - sag(v, JB, 12, 20)]; },             rot: 0 }
+  ];
+  var LIGHT = {   // the light wire sits a touch further in than the bough
+    top:    function (v) { return [v, sag(v, JOINS, 22, 92)]; },
+    // sides and bottom: the wire runs through the bough and bulbs point OUT toward
+    // the screen edge, so nothing covers slide text
+    left:   function (v) { return [sag(v, JV, 14, 24), v]; },
+    right:  function (v) { return [W - sag(v, JV, 14, 24), v]; },
+    bottom: function (v) { return [v, H - sag(v, JB, 14, 22)]; }
+  };
+  function pathFor(fn, from, to) {
+    var d = '';
+    for (var v = from; v <= to; v += 8) { var p = fn(v); d += (d ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1); }
+    return d;
+  }
+
   var lights = el('g', {}, svg);   // behind the garland, so the wire tucks in
   var garland = el('g', {}, svg);
   var bows = el('g', {}, svg);
   var ornLayer = el('g', {}, svg);
 
-  // Base bough
-  el('path', { d: swagPath(TOP, DIP), fill: 'none', stroke: '#0b3d1c', 'stroke-width': 34, 'stroke-linecap': 'round' }, garland);
-  el('path', { d: swagPath(TOP, DIP), fill: 'none', stroke: '#145a2a', 'stroke-width': 22, 'stroke-linecap': 'round' }, garland);
-  // Needles
-  var needles = '';
   var greens = ['#0e4a22', '#17692f', '#1f7f3a', '#2a9147', '#0a3a1a', '#3aa457'];
   var byColor = {};
-  for (var x = -30; x <= 1950; x += 4) {
-    var y = gY(x);
-    for (var n = 0; n < 5; n++) {
-      var ang = rnd() * Math.PI * 2, len = 12 + rnd() * 16;
-      var ox = (rnd() - 0.5) * 14, oy = (rnd() - 0.5) * 14;
-      var c = greens[Math.floor(rnd() * greens.length)];
-      byColor[c] = (byColor[c] || '') + 'M' + (x + ox).toFixed(1) + ' ' + (y + oy).toFixed(1) +
-        'l' + (Math.cos(ang) * len).toFixed(1) + ' ' + (Math.sin(ang) * len).toFixed(1);
+  // Draw the sides first so the top garland lays over them at the corners.
+  [SIDES[1], SIDES[2], SIDES[3], SIDES[0]].forEach(function (side) {
+    var d = pathFor(side.pt, side.from, side.to);
+    el('path', { d: d, fill: 'none', stroke: '#0b3d1c', 'stroke-width': 34, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }, garland);
+    el('path', { d: d, fill: 'none', stroke: '#145a2a', 'stroke-width': 22, 'stroke-linecap': 'round', 'stroke-linejoin': 'round' }, garland);
+    for (var v = side.from; v <= side.to; v += 4) {
+      var p = side.pt(v);
+      for (var n = 0; n < 5; n++) {
+        var ang = rnd() * Math.PI * 2, len = 12 + rnd() * 16;
+        var ox = (rnd() - 0.5) * 14, oy = (rnd() - 0.5) * 14;
+        var c = greens[Math.floor(rnd() * greens.length)];
+        byColor[c] = (byColor[c] || '') + 'M' + (p[0] + ox).toFixed(1) + ' ' + (p[1] + oy).toFixed(1) +
+          'l' + (Math.cos(ang) * len).toFixed(1) + ' ' + (Math.sin(ang) * len).toFixed(1);
+      }
     }
-  }
+  });
   for (var col in byColor) el('path', { d: byColor[col], stroke: col, 'stroke-width': 3, 'stroke-linecap': 'round', fill: 'none' }, garland);
-  // A few pinecones and berries tucked into the bough
-  for (var b = 0; b < 46; b++) {
-    var bx = 20 + rnd() * 1880, by = gY(bx) + (rnd() - 0.5) * 16;
-    if (rnd() < 0.35) {
-      el('ellipse', { cx: bx, cy: by, rx: 7, ry: 11, fill: '#6b3f1d', transform: 'rotate(' + (rnd() * 60 - 30) + ' ' + bx + ' ' + by + ')' }, garland);
-    } else {
-      el('circle', { cx: bx, cy: by, r: 5.5, fill: '#d0141f' }, garland);
-      el('circle', { cx: bx - 1.5, cy: by - 1.5, r: 1.8, fill: '#ff9b9b' }, garland);
+  // Pinecones and berries tucked in all the way around
+  SIDES.forEach(function (side) {
+    var count = Math.round((side.to - side.from) / 42);
+    for (var b = 0; b < count; b++) {
+      var p = side.pt(side.from + 40 + rnd() * (side.to - side.from - 80));
+      var bx = p[0] + (rnd() - 0.5) * 16, by = p[1] + (rnd() - 0.5) * 16;
+      if (rnd() < 0.35) {
+        el('ellipse', { cx: bx, cy: by, rx: 7, ry: 11, fill: '#6b3f1d', transform: 'rotate(' + (rnd() * 180) + ' ' + bx + ' ' + by + ')' }, garland);
+      } else {
+        el('circle', { cx: bx, cy: by, r: 5.5, fill: '#d0141f' }, garland);
+        el('circle', { cx: bx - 1.5, cy: by - 1.5, r: 1.8, fill: '#ff9b9b' }, garland);
+      }
     }
-  }
+  });
 
-  // ── Lights: a wire that dips a little lower than the garland ──
-  var LTOP = 22, LDIP = 92;
-  var lY = function (x) { return swagY(x, LTOP, LDIP); };
-  el('path', { d: swagPath(LTOP, LDIP), fill: 'none', stroke: '#0d2a14', 'stroke-width': 3 }, lights);
+  // ── Lights all the way around, bulbs pointing in toward the slide ──
+  var BULB_COLORS = ['#ff3b3b', '#2ee86b', '#3d8bff', '#ffc93c', '#fff4d6', '#ff7ad9'];
   var li = 0;
-  for (var lx = 20; lx < 1920; lx += 58) {
-    var ly = lY(lx);
-    var tilt = (rnd() - 0.5) * 30;
-    var g = el('g', { transform: 'translate(' + lx + ' ' + ly + ') rotate(' + tilt.toFixed(1) + ')' }, lights);
-    var ci = li % 6;
-    var delay = (-rnd() * 2.4).toFixed(2) + 's', dur = (1.6 + rnd() * 1.8).toFixed(2) + 's';
-    var glow = el('circle', { cx: 0, cy: 18, r: 34, fill: 'url(#xg-l' + ci + ')', class: 'xm-glow' }, g);
-    glow.style.animationDelay = delay; glow.style.animationDuration = dur;
-    el('rect', { x: -5, y: 0, width: 10, height: 9, rx: 2, fill: '#1c3a22' }, g);
-    var bulbColor = ['#ff3b3b', '#2ee86b', '#3d8bff', '#ffc93c', '#fff4d6', '#ff7ad9'][ci];
-    var bulb = el('path', { d: 'M-7 9 C-11 20 -7 32 0 34 C7 32 11 20 7 9 Z', fill: bulbColor, class: 'xm-bulb' }, g);
-    bulb.style.animationDelay = delay; bulb.style.animationDuration = dur;
-    el('ellipse', { cx: -2.5, cy: 17, rx: 2, ry: 5, fill: '#fff', opacity: 0.6 }, g);
-    li++;
-  }
+  SIDES.forEach(function (side) {
+    var fn = LIGHT[side.name];
+    el('path', { d: pathFor(fn, side.from, side.to), fill: 'none', stroke: '#0d2a14', 'stroke-width': 3 }, lights);
+    var start = side.name === 'top' || side.name === 'bottom' ? 20 : 90;
+    var stop = side.name === 'top' || side.name === 'bottom' ? 1920 : 1000;
+    for (var v = start; v < stop; v += 58) {
+      var p = fn(v);
+      var tilt = side.rot + (rnd() - 0.5) * 30;
+      var g = el('g', { transform: 'translate(' + p[0].toFixed(1) + ' ' + p[1].toFixed(1) + ') rotate(' + tilt.toFixed(1) + ')' }, lights);
+      var ci = li % 6;
+      var delay = (-rnd() * 2.4).toFixed(2) + 's', dur = (1.6 + rnd() * 1.8).toFixed(2) + 's';
+      var glow = el('circle', { cx: 0, cy: 18, r: side.name === 'top' ? 34 : 24, fill: 'url(#xg-l' + ci + ')', class: 'xm-glow' }, g);
+      glow.style.animationDelay = delay; glow.style.animationDuration = dur;
+      el('rect', { x: -5, y: 0, width: 10, height: 9, rx: 2, fill: '#1c3a22' }, g);
+      var bulb = el('path', { d: 'M-7 9 C-11 20 -7 32 0 34 C7 32 11 20 7 9 Z', fill: BULB_COLORS[ci], class: 'xm-bulb' }, g);
+      bulb.style.animationDelay = delay; bulb.style.animationDuration = dur;
+      el('ellipse', { cx: -2.5, cy: 17, rx: 2, ry: 5, fill: '#fff', opacity: 0.6 }, g);
+      li++;
+    }
+  });
 
-  // ── Bows at each swag join ──
-  function bow(x, y, s) {
-    var g = el('g', { transform: 'translate(' + x + ' ' + y + ') scale(' + s + ')' }, bows);
+  // ── Bows at each swag join, all four sides ──
+  function bow(x, y, s, r) {
+    var g = el('g', { transform: 'translate(' + x + ' ' + y + ') rotate(' + (r || 0) + ') scale(' + s + ')' }, bows);
     el('path', { d: 'M-4 4 L-16 46 L-6 40 L-2 50 Z', fill: '#a60d16' }, g);
     el('path', { d: 'M4 4 L16 46 L6 40 L2 50 Z', fill: '#a60d16' }, g);
     el('path', { d: 'M0 0 C-12 -26 -44 -22 -38 -2 C-34 12 -12 8 0 0 Z', fill: '#d0141f' }, g);
@@ -146,8 +188,11 @@
     el('circle', { cx: -2, cy: -2, r: 3, fill: '#ff8080', opacity: 0.6 }, g);
   }
   [465, 960, 1455].forEach(function (x) { bow(x, TOP + 2, 1); });
-  bow(36, gY(36) + 4, 0.85);
-  bow(1884, gY(1884) + 4, 0.85);
+  [480, 960, 1440].forEach(function (x) { bow(x, H - 14, 0.9, 0); });
+  [360, 720].forEach(function (y) { bow(14, y, 0.9, 90); bow(W - 14, y, 0.9, -90); });
+  // big corner bows
+  bow(34, 30, 1.15, -45); bow(W - 34, 30, 1.15, 45);
+  bow(34, H - 30, 1.15, 45); bow(W - 34, H - 30, 1.15, -45);
 
   // ── Ornament shapes (hook at 0,0, hanging down) ──
   function cap(g, w) {
