@@ -6,13 +6,16 @@
   var XMAS_END = new Date('2027-01-07T00:00:00');
   if (new Date() >= XMAS_END || /[?&]xmas=0/.test(location.search)) return;
 
+  var FRAME = 0.93;
   var NS = 'http://www.w3.org/2000/svg';
   var W = 1920, H = 1080;
 
   var css = document.createElement('style');
   css.textContent =
     '#xmas{position:fixed;inset:0;z-index:40;pointer-events:none;}' +
-    '#xmas svg{width:100%;height:100%;display:block;}' +
+    // TVs crop the outer few % of the picture (overscan), so the whole frame is pulled in
+    // to FRAME of the screen; the slides are shrunk to match (SAFE in add_christmas.py).
+    '#xmas svg{width:100%;height:100%;display:block;overflow:visible;transform:scale(' + FRAME + ');transform-origin:50% 50%;}' +
     '.xm-orn{opacity:0;transition:opacity 1.2s ease;}' +
     '.xm-orn.on{opacity:1;}' +
     '.xm-sway{transform-box:view-box;animation:xmSway 5s ease-in-out infinite alternate;}' +
@@ -93,10 +96,10 @@
   // Each side as a point function over its own axis. Sides sag inward only a little
   // so the slides stay readable; the top keeps its deeper swags.
   var SIDES = [
-    { name: 'top',    from: -30, to: 1950, pt: function (v) { return [v, sag(v, JOINS, TOP, DIP)]; },            rot: 0 },
-    { name: 'left',   from: -20, to: 1100, pt: function (v) { return [sag(v, JV, 12, 22), v]; },                 rot: 90 },
-    { name: 'right',  from: -20, to: 1100, pt: function (v) { return [W - sag(v, JV, 12, 22), v]; },             rot: -90 },
-    { name: 'bottom', from: -30, to: 1950, pt: function (v) { return [v, H - sag(v, JB, 12, 20)]; },             rot: 0 }
+    { name: 'top',    from: 8, to: 1912, pt: function (v) { return [v, sag(v, JOINS, TOP, DIP)]; },            rot: 0 },
+    { name: 'left',   from: 10, to: 1070, pt: function (v) { return [sag(v, JV, 12, 22), v]; },                 rot: 90 },
+    { name: 'right',  from: 10, to: 1070, pt: function (v) { return [W - sag(v, JV, 12, 22), v]; },             rot: -90 },
+    { name: 'bottom', from: 8, to: 1912, pt: function (v) { return [v, H - sag(v, JB, 12, 20)]; },             rot: 0 }
   ];
   var LIGHT = {   // the light wire sits a touch further in than the bough
     top:    function (v) { return [v, sag(v, JOINS, 22, 92)]; },

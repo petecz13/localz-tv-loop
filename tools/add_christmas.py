@@ -20,6 +20,8 @@ OVERLAY = ROOT / "tools" / "christmas_overlay.js"
 START, END = "<!--XMAS-START-->", "<!--XMAS-END-->"
 HOOK = "try { window.__xmas && window.__xmas.next(); } catch (_) {}"
 HOOK_AFTER = "    curEl = el;\n"
+# Slides shrink a bit so they sit inside the garland frame (normal is 0.94).
+SAFE_NORMAL, SAFE_XMAS = "var SAFE = 0.94;", "var SAFE = 0.86;"
 
 TPL_RE = re.compile(r'(<script type="__bundler/template">)(.*?)(</script>)', re.S)
 
@@ -35,11 +37,13 @@ def main():
     # strip any previous copy
     tpl = re.sub(re.escape(START) + r".*?" + re.escape(END) + r"\n?", "", tpl, flags=re.S)
     tpl = tpl.replace(HOOK_AFTER + "    " + HOOK + "\n", HOOK_AFTER)
+    tpl = tpl.replace(SAFE_XMAS, SAFE_NORMAL)
 
     if not remove:
         if HOOK_AFTER not in tpl or "</body>" not in tpl:
             sys.exit("loop.html layout changed; hook points not found")
         tpl = tpl.replace(HOOK_AFTER, HOOK_AFTER + "    " + HOOK + "\n", 1)
+        tpl = tpl.replace(SAFE_NORMAL, SAFE_XMAS, 1)
         block = START + "\n<script>\n" + OVERLAY.read_text(encoding="utf-8") + "</script>\n" + END + "\n"
         tpl = tpl.replace("</body>", block + "</body>", 1)
 
