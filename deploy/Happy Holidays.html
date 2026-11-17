@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Happy Holidays</title>
+<style>
+  /* fonts ship with the slide so it never depends on Google Fonts loading */
+  @font-face { font-family: 'Anton'; src: url('fonts/anton-latin-400-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Great Vibes'; src: url('fonts/great-vibes-latin-400-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Barlow Condensed'; font-weight: 600; src: url('fonts/barlow-condensed-latin-600-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Barlow Condensed'; font-weight: 700; src: url('fonts/barlow-condensed-latin-700-normal.woff2') format('woff2'); }
+</style>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 100%; height: 100%; background: #0C2340; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+
+  #stage { position: relative; width: 1920px; height: 1080px; overflow: hidden; transform-origin: center center;
+    background: radial-gradient(70% 90% at 30% 45%, #1d4478 0%, #0C2340 55%, #06142a 100%);
+    font-family: 'Barlow Condensed', sans-serif; }
+
+  /* soft glow behind the logo */
+  .halo { position: absolute; left: 90px; top: 110px; width: 860px; height: 860px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(242,175,50,.28) 0%, rgba(242,175,50,.08) 45%, transparent 70%);
+    animation: hh-pulse 5s ease-in-out infinite; }
+  @keyframes hh-pulse { 0%,100% { opacity: .75; transform: scale(1); } 50% { opacity: 1; transform: scale(1.04); } }
+
+  .logo { position: absolute; left: 130px; top: 175px; width: 820px; height: auto;
+    filter: drop-shadow(0 24px 40px rgba(0,0,0,.5)); animation: hh-float 6s ease-in-out infinite; }
+  @keyframes hh-float { 0%,100% { transform: translateY(0) rotate(-1deg); } 50% { transform: translateY(-14px) rotate(1deg); } }
+
+  .right { position: absolute; left: 1010px; right: 110px; top: 210px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+  .script { font-family: 'Great Vibes', cursive; font-size: 120px; line-height: 1; color: #F2AF32;
+    text-shadow: 0 6px 18px rgba(0,0,0,.45); }
+  .big { font-family: 'Anton', sans-serif; text-transform: uppercase; line-height: .92; color: #ffffff;
+    font-size: 220px; letter-spacing: 2px; text-shadow: 0 8px 0 #9b0f18, 0 18px 40px rgba(0,0,0,.5); }
+  .big.gold { color: #F2AF32; text-shadow: 0 8px 0 #7a4e05, 0 18px 40px rgba(0,0,0,.5); }
+  .rule { margin: 34px 0 26px; display: flex; align-items: center; gap: 22px; }
+  .rule span { width: 120px; height: 3px; background: rgba(242,175,50,.7); }
+  .rule i { color: #F2AF32; font-style: normal; font-size: 34px; }
+  .from { font-weight: 700; font-size: 46px; letter-spacing: 8px; text-transform: uppercase; color: #cfe0f5; }
+
+  .footer { position: absolute; left: 0; right: 0; bottom: 0; height: 86px; display: flex; align-items: center; justify-content: center; gap: 40px;
+    background: #081a30; border-top: 3px solid #F2AF32; }
+  .footer .tag { font-family: 'Anton', sans-serif; font-size: 36px; letter-spacing: 4px; text-transform: uppercase; color: #F2AF32; }
+  .footer .dot { color: #9b0f18; font-size: 30px; }
+  .footer .url { font-weight: 700; font-size: 32px; letter-spacing: 5px; text-transform: uppercase; color: #9fb6d6; }
+
+  /* gentle snowfall */
+  .snow { position: absolute; inset: 0; pointer-events: none; }
+  .flake { position: absolute; top: -20px; border-radius: 50%; background: #fff; opacity: .8; animation: hh-fall linear infinite; }
+  @keyframes hh-fall { to { transform: translate3d(var(--dx), 1120px, 0); } }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="halo"></div>
+  <div class="snow" id="snow"></div>
+  <img class="logo" src="uploads/localz-xmas-logo.webp" alt="Localz Sports Bar &amp; Grill holiday logo">
+
+  <div class="right">
+    <div class="script">Cheers to the Season</div>
+    <div class="big" style="margin-top: 26px;">Happy</div>
+    <div class="big gold">Holidays</div>
+    <div class="rule"><span></span><i>&#10052;</i><span></span></div>
+    <div class="from">From all of us at Localz</div>
+  </div>
+
+  <div class="footer">
+    <span class="tag">Downtown St. Pete's #1 Sports Bar</span>
+    <span class="dot">&#9733;</span>
+    <span class="url">www.localzsportsbar.com</span>
+  </div>
+</div>
+<script>
+  (function () {
+    var stage = document.getElementById('stage');
+    function fit() {
+      var s = Math.min(window.innerWidth / 1920, window.innerHeight / 1080);
+      if (s && isFinite(s)) stage.style.transform = 'scale(' + s + ')';
+    }
+    fit(); window.addEventListener('resize', fit);
+
+    var snow = document.getElementById('snow'), seed = 3;
+    function r() { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }
+    for (var i = 0; i < 70; i++) {
+      var f = document.createElement('div'), size = 3 + r() * 7;
+      f.className = 'flake';
+      f.style.left = (r() * 1920) + 'px';
+      f.style.width = f.style.height = size + 'px';
+      f.style.opacity = (0.35 + r() * 0.55).toFixed(2);
+      f.style.setProperty('--dx', ((r() - 0.5) * 160).toFixed(0) + 'px');
+      f.style.animationDuration = (9 + r() * 10).toFixed(1) + 's';
+      f.style.animationDelay = (-r() * 18).toFixed(1) + 's';
+      snow.appendChild(f);
+    }
+  })();
+</script>
+</body>
+</html>
