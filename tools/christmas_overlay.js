@@ -60,7 +60,7 @@
 
   // ── Garland path: four swags across the top ──
   var JOINS = [-30, 465, 960, 1455, 1950];
-  var TOP = 14, DIP = 74;
+  var TOP = 14, DIP = 14;
   function swagY(x, top, dip) {
     for (var i = 0; i < JOINS.length - 1; i++) {
       if (x >= JOINS[i] && x <= JOINS[i + 1]) {
@@ -97,17 +97,17 @@
   // so the slides stay readable; the top keeps its deeper swags.
   var SIDES = [
     { name: 'top',    from: 8, to: 1912, pt: function (v) { return [v, sag(v, JOINS, TOP, DIP)]; },            rot: 0 },
-    { name: 'left',   from: 10, to: 1070, pt: function (v) { return [sag(v, JV, 12, 22), v]; },                 rot: 90 },
-    { name: 'right',  from: 10, to: 1070, pt: function (v) { return [W - sag(v, JV, 12, 22), v]; },             rot: -90 },
-    { name: 'bottom', from: 8, to: 1912, pt: function (v) { return [v, H - sag(v, JB, 12, 20)]; },             rot: 0 }
+    { name: 'left',   from: 10, to: 1070, pt: function (v) { return [12, v]; },                 rot: 90 },
+    { name: 'right',  from: 10, to: 1070, pt: function (v) { return [W - 12, v]; },             rot: -90 },
+    { name: 'bottom', from: 8, to: 1912, pt: function (v) { return [v, H - 12]; },             rot: 0 }
   ];
   var LIGHT = {   // the light wire sits a touch further in than the bough
-    top:    function (v) { return [v, sag(v, JOINS, 22, 92)]; },
+    top:    function (v) { return [v, 22]; },
     // sides and bottom: the wire runs through the bough and bulbs point OUT toward
     // the screen edge, so nothing covers slide text
-    left:   function (v) { return [sag(v, JV, 14, 24), v]; },
-    right:  function (v) { return [W - sag(v, JV, 14, 24), v]; },
-    bottom: function (v) { return [v, H - sag(v, JB, 14, 22)]; }
+    left:   function (v) { return [14, v]; },
+    right:  function (v) { return [W - 14, v]; },
+    bottom: function (v) { return [v, H - 14]; }
   };
   function pathFor(fn, from, to) {
     var d = '';
