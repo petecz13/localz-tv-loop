@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Deep-Fried Pumpkin Pie</title>
+<style>
+  @font-face { font-family: 'Anton'; src: url('fonts/anton-latin-400-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Great Vibes'; src: url('fonts/great-vibes-latin-400-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Barlow Condensed'; font-weight: 600; src: url('fonts/barlow-condensed-latin-600-normal.woff2') format('woff2'); }
+  @font-face { font-family: 'Barlow Condensed'; font-weight: 700; src: url('fonts/barlow-condensed-latin-700-normal.woff2') format('woff2'); }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 100%; height: 100%; background: #0C2340; overflow: hidden; display: flex; align-items: center; justify-content: center; }
+  #stage { position: relative; width: 1920px; height: 1080px; overflow: hidden; transform-origin: center center;
+    background: radial-gradient(70% 90% at 25% 45%, #1d4478 0%, #0C2340 55%, #06142a 100%); font-family: 'Barlow Condensed', sans-serif; }
+  .halo { position: absolute; left: 70px; top: 40px; width: 600px; height: 600px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(242,175,50,.26) 0%, rgba(242,175,50,.07) 45%, transparent 70%); }
+  .left { position: absolute; left: 70px; width: 610px; top: 70px; bottom: 120px; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; }
+  .logo { width: 400px; height: auto; filter: drop-shadow(0 20px 34px rgba(0,0,0,.5)); }
+  .kicker { margin-top: 22px; font-weight: 700; font-size: 40px; letter-spacing: 9px; text-transform: uppercase; color: #cfe0f5; }
+  .big { font-family: 'Anton', sans-serif; text-transform: uppercase; line-height: .95; font-size: 150px; color: #F2AF32;
+    text-shadow: 0 6px 0 #7a4e05, 0 16px 34px rgba(0,0,0,.5); }
+  .big.w { color: #fff; text-shadow: 0 6px 0 #9b0f18, 0 16px 34px rgba(0,0,0,.5); margin-top: 6px; }
+  .dates { margin-top: 26px; font-weight: 700; font-size: 44px; white-space: nowrap; letter-spacing: 1px; color: #F2AF32; }
+  .panel { position: absolute; left: 730px; right: 80px; top: 70px; bottom: 130px; padding: 26px 50px;
+    display: flex; flex-direction: column; justify-content: space-evenly;
+    background: rgba(6,18,38,.82); border: 4px solid #F2AF32; border-radius: 26px; box-shadow: 0 24px 50px rgba(0,0,0,.45); }
+  .item { padding: 8px 0; }
+  .item + .item { border-top: 2px solid rgba(242,175,50,.45); padding-top: 22px; }
+  .row { display: flex; align-items: baseline; justify-content: space-between; gap: 30px; }
+  .name { font-family: 'Anton', sans-serif; text-transform: uppercase; color: #F2AF32; letter-spacing: 1px; }
+  .price { font-family: 'Anton', sans-serif; color: #fff; }
+  .desc { font-weight: 600; color: #e3ecf8; line-height: 1.15; margin-top: 6px; max-width: 900px; }
+  .tags { display: flex; gap: 16px; margin-top: 12px; }
+  .tags:first-child { margin: 0 0 8px; }
+  .tag { font-weight: 700; font-size: 24px; letter-spacing: 3px; text-transform: uppercase; padding: 5px 16px; border-radius: 6px; }
+  .tag.red { background: #c8141f; color: #fff; }
+  .tag.gold { border: 2px solid #F2AF32; color: #F2AF32; }
+  .tag.treat { background: #fff; color: #c8141f; }
+  .n3 .name { font-size: 76px; } .n3 .price { font-size: 76px; } .n3 .desc { font-size: 34px; }
+  .n4 .name { font-size: 62px; } .n4 .price { font-size: 64px; } .n4 .desc { font-size: 32px; }
+  .panel.hasfeat { bottom: 400px; }
+  .panel.hasfeat .name { font-size: 62px; } .panel.hasfeat .price { font-size: 62px; } .panel.hasfeat .desc { font-size: 31px; }
+  .feature { position: absolute; left: 730px; right: 80px; bottom: 130px; height: 240px; padding: 46px 50px 24px;
+    background: linear-gradient(135deg, #b3121c 0%, #7e0a12 100%); border: 4px solid #F2AF32; border-radius: 26px;
+    box-shadow: 0 0 0 6px rgba(242,175,50,.18), 0 24px 50px rgba(0,0,0,.5); }
+  .feature .flabel { position: absolute; top: -26px; left: 50%; transform: translateX(-50%); white-space: nowrap;
+    background: #F2AF32; color: #0C2340; font-family: 'Anton', sans-serif; font-size: 34px; letter-spacing: 6px; text-transform: uppercase;
+    padding: 4px 30px; border-radius: 10px; box-shadow: 0 8px 18px rgba(0,0,0,.4); }
+  .feature .name { font-size: 80px; color: #fff; text-shadow: 0 5px 0 #4a0509; }
+  .feature .price { font-size: 84px; color: #F2AF32; text-shadow: 0 5px 0 #4a0509; }
+  .feature .desc { font-size: 36px; color: #ffe7c2; margin-top: 4px; }
+  .footer { position: absolute; left: 0; right: 0; bottom: 0; height: 86px; display: flex; align-items: center; justify-content: center; gap: 40px;
+    background: #081a30; border-top: 3px solid #F2AF32; }
+  .footer .tagline { font-family: 'Anton', sans-serif; font-size: 36px; letter-spacing: 4px; text-transform: uppercase; color: #F2AF32; }
+  .footer .dot { color: #9b0f18; font-size: 30px; }
+  .footer .url { font-weight: 700; font-size: 32px; letter-spacing: 5px; text-transform: uppercase; color: #9fb6d6; }
+  .snow { position: absolute; inset: 0; pointer-events: none; }
+  .flake { position: absolute; top: -20px; border-radius: 50%; background: #fff; animation: hm-fall linear infinite; }
+  @keyframes hm-fall { to { transform: translate3d(var(--dx), 1120px, 0); } }
+</style>
+<style>
+  .photo { position: absolute; left: 90px; top: 50px; width: 700px; height: 900px; border-radius: 26px; overflow: hidden;
+    border: 5px solid #F2AF32; box-shadow: 0 0 60px rgba(242,175,50,.25), 0 30px 60px rgba(0,0,0,.55); }
+  .photo img { width: 100%; height: 100%; object-fit: cover; object-position: 50% 60%; transform-origin: 48% 62%; animation: ac-zoom 14s ease-in-out infinite alternate; }
+  @keyframes ac-zoom { from { transform: scale(1); } to { transform: scale(1.06); } }
+  .copy { position: absolute; left: 900px; right: 80px; top: 70px; bottom: 120px; display: flex; flex-direction: column; justify-content: center; }
+  .copy .top { display: flex; align-items: center; gap: 28px; }
+  .copy .top img { width: 150px; height: auto; filter: drop-shadow(0 10px 20px rgba(0,0,0,.5)); }
+  .script { font-family: 'Great Vibes', cursive; font-size: 92px; line-height: 1; color: #F2AF32; text-shadow: 0 6px 18px rgba(0,0,0,.45); }
+  .hname { margin-top: 18px; font-family: 'Anton', sans-serif; text-transform: uppercase; line-height: .95; font-size: 128px; color: #fff;
+    text-shadow: 0 6px 0 #9b0f18, 0 16px 34px rgba(0,0,0,.5); }
+  .hname.g { color: #F2AF32; text-shadow: 0 6px 0 #7a4e05, 0 16px 34px rgba(0,0,0,.5); }
+  .rule2 { margin: 30px 0 24px; width: 260px; height: 4px; background: #F2AF32; border-radius: 2px; }
+  .ingr { font-weight: 600; font-size: 40px; line-height: 1.25; color: #e3ecf8; max-width: 860px; }
+  .pricebar { margin-top: 38px; display: flex; align-items: center; gap: 34px; }
+  .pricetag { font-family: 'Anton', sans-serif; font-size: 120px; line-height: 1; color: #0C2340; background: #F2AF32; padding: 8px 40px 14px; border-radius: 18px;
+    box-shadow: 0 16px 34px rgba(0,0,0,.45); }
+  .when { font-weight: 700; font-size: 40px; line-height: 1.15; letter-spacing: 1px; color: #cfe0f5; text-transform: uppercase; }
+  .when b { color: #F2AF32; }
+  .glow { position: absolute; left: 40px; top: 90px; width: 820px; height: 820px; border-radius: 50%;
+    background: radial-gradient(circle, rgba(242,175,50,.42) 0%, rgba(242,140,40,.16) 42%, transparent 70%); animation: ac-pulse 5s ease-in-out infinite; }
+  @keyframes ac-pulse { 0%,100% { opacity: .8; transform: scale(1); } 50% { opacity: 1; transform: scale(1.04); } }
+  .floor { position: absolute; left: 130px; top: 880px; width: 680px; height: 60px; border-radius: 50%;
+    background: radial-gradient(ellipse, rgba(0,0,0,.6) 0%, transparent 70%); }
+  .drink { position: absolute; left: 175px; top: 90px; height: 840px; width: auto;
+    filter: drop-shadow(0 0 30px rgba(242,175,50,.35)) drop-shadow(0 24px 30px rgba(0,0,0,.5)); animation: ac-float 6s ease-in-out infinite; }
+  @keyframes ac-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+</style>
+</head>
+<body>
+<div id="stage">
+  <div class="snow" id="snow"></div>
+  <div class="glow"></div><div class="floor"></div><img class="drink" style="left: 80px; top: 230px; width: 780px; height: auto; animation: none;" src="uploads/pie-cut.webp" alt="Deep-Fried Pumpkin Pie">
+  <div class="copy">
+    <div class="top"><img src="uploads/localz-xmas-logo.webp" alt="Localz holiday logo"><div class="script">Holiday Dessert</div></div>
+    <div class="hname">Deep-Fried</div>
+    <div class="hname g">Pumpkin Pie</div>
+    <div class="rule2"></div>
+    <div class="ingr">Battered and fried pumpkin pie, served with whipped cream.</div>
+    <div class="pricebar"><div class="pricetag">$8</div><div class="when">Holiday menu<br><b>Now through Dec. 31</b></div></div>
+  </div>
+  <div class="footer">
+    <span class="tagline">Downtown St. Pete's #1 Sports Bar</span>
+    <span class="dot">&#9733;</span>
+    <span class="url">www.localzsportsbar.com</span>
+  </div>
+</div>
+<script>
+  (function () {
+    var stage = document.getElementById('stage');
+    function fit() { var s = Math.min(window.innerWidth / 1920, window.innerHeight / 1080); if (s && isFinite(s)) stage.style.transform = 'scale(' + s + ')'; }
+    fit(); window.addEventListener('resize', fit);
+    var snow = document.getElementById('snow'), seed = 5;
+    function r() { seed = (seed * 16807) % 2147483647; return (seed - 1) / 2147483646; }
+    for (var i = 0; i < 90; i++) {
+      var f = document.createElement('div'), size = 4 + r() * 8;
+      f.className = 'flake'; f.style.left = (r() * 1920) + 'px'; f.style.width = f.style.height = size + 'px';
+      f.style.opacity = (0.3 + r() * 0.5).toFixed(2); f.style.setProperty('--dx', ((r() - 0.5) * 160).toFixed(0) + 'px');
+      f.style.animationDuration = (10 + r() * 10).toFixed(1) + 's'; f.style.animationDelay = (-r() * 18).toFixed(1) + 's';
+      snow.appendChild(f);
+    }
+  })();
+</script>
+</body>
+</html>
